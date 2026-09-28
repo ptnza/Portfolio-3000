@@ -1,0 +1,11 @@
+/*
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+# Media names aren't fingerprinted (files are replaced in place), so cache a day, not forever.
+# CSS, JS and HTML keep Cloudflare's default (revalidate every visit) so updates show up at once.
+/assets/media/*
+  Cache-Control: public, max-age=86400
+/assets/hover/*
+  Cache-Control: public, max-age=86400
+/assets/og.jpg
+  Cache-Control: public, max-age=86400

@@ -1,0 +1,22 @@
+{
+ "title": "Side quests",
+ "summary": "Tools and experiments, built between projects. Some for clients, most for me.",
+ "items": [
+  { "name": "Areaform", "desc": "Data visualization software", "status": "progress", "url": "",
+    "video": "assets/media/tools/areaform.mp4", "image": "assets/media/tools/areaform-poster.jpg" },
+  { "name": "Moodboard 3000", "desc": "An image layout engine for Figma and Figma Slides, used by 4,600+ designers.", "status": "live", "url": "https://www.figma.com/community/plugin/1616902199522165388/moodboard-3000",
+    "video": "assets/media/tools/moodboard-3000.mp4", "image": "assets/media/tools/moodboard-3000-poster.jpg" },
+  { "name": "Patternly", "desc": "Custom tool for Calendly", "status": "", "url": "",
+    "video": "assets/media/tools/patternly.mp4", "image": "assets/media/tools/patternly-poster.jpg" },
+  { "name": "Superdots", "desc": "Custom tool for Superhuman", "status": "", "url": "",
+    "video": "assets/media/tools/superdots.mp4", "image": "assets/media/tools/superdots-poster.jpg" },
+  { "name": "Superflow", "desc": "Custom tool for Superhuman", "status": "", "url": "",
+    "video": "assets/media/tools/superflow.mp4", "image": "assets/media/tools/superflow-poster.jpg" },
+  { "name": "Torus Formus", "desc": "Custom tool for sculpting the torus", "status": "", "url": "",
+    "video": "assets/media/tools/torus-formus.mp4", "image": "assets/media/tools/torus-formus-poster.jpg" },
+  { "name": "Lissajous Flow", "desc": "Custom tool for drawing Lissajous curves in motion", "status": "", "url": "",
+    "video": "assets/media/tools/lissajous-flow.mp4", "image": "assets/media/tools/lissajous-flow-poster.jpg" },
+  { "name": "The Sound of Noise", "desc": "Tool that turns noise into texture", "status": "", "url": "",
+    "image": "assets/media/tools/sound-of-noise.jpg" }
+ ]
+}

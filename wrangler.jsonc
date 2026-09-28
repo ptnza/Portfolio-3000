@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio-3000",
+  "compatibility_date": "2026-09-26",
+  "assets": {
+    "directory": ".",
+    // unknown paths get 404.html with a real 404 status
+    "not_found_handling": "404-page"
+  }
+}

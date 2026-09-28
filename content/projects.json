@@ -1,0 +1,142 @@
+[
+ {
+  "slug": "calendly",
+  "title": "Calendly",
+  "summary": "Calendly wanted to be known for more than the meeting link, as it grew into a platform for notes, contacts, payments, and AI. I was on the Smith & Diction team from day one. My first pass at the wordmark is where its signature detail came from: tracked in tight, the letters seemed to flow into each other, so we customized them to actually connect. I built Patternly, a pattern generator in Figma Make that produces the calendar-block patterns used across the brand, and developed the Midjourney-driven imagery behind its color fields. Beyond that, I worked across the symbol and the brand and web system.",
+  "role": "Art director",
+  "with": "Smith & Diction",
+  "year": "2026",
+  "client": "Calendly",
+  "lede": "Symbol, wordmark, and visual system for Calendly’s move from scheduling tool to platform.",
+  "body": [
+   "Calendly had outgrown the thing everyone knew it for. Scheduling was still the core, but the product was expanding into notes, contacts, payments, and an AI assistant, and the brand needed room for all of it. Smith & Diction built the rebrand around one idea: making space. Space on your calendar, and space in your head.",
+   "I was on the Smith & Diction team from day one, starting on the <b>symbol and wordmark</b> with Tully Ryan and Dayan D’Aniello. The mark is a C with a single ripple, slightly off-balance on purpose. One shared link, sending effects outward. The wordmark’s signature detail came out of my first pass: tracked in really tight, the letters looked like they were leading into each other, so we customized them to actually connect. Calendly connects people without anyone noticing it’s there. Now the wordmark does too.",
+   "From there the work widened into the <b>brand system</b>. Calendly wanted AI imagery in the brand, which is still shaky ground for consistency, so I took that on and developed the Midjourney-driven visuals behind the dreamy color fields. I also built <b>Patternly</b>, a pattern generator in Figma Make, to produce the calendar-block patterns that stand in for different kinds of time. Same rules, endless variations, and a team that could make new ones without waiting on me. Around all of it: a cooler, calmer blue, sub-product icons, and flex bubbles that do double duty as brand graphics and product UI."
+  ],
+  "credits": [
+   ["Creative direction, strategy, copy", "Chara Smith"],
+   ["Art direction", "Mike Smith"],
+   ["Symbol + wordmark", "Tully Ryan, Dayan D’Aniello, Gavin Potenza"],
+   ["Brand & web design", "Summer McClure, Dayan D’Aniello, Tully Ryan, Caleb Sun, Gavin Potenza, Judson Collier"],
+   ["Product design", "Judson Collier, Caleb Sun"],
+   ["Motion", "Tully Ryan, Caleb Sun, James Dybvig, Justin Lawes"],
+   ["Project management", "Liz Meyer"]
+  ],
+  "link": ["Read the full case study", "https://medium.com/smith-diction/branding-calendly-d86116281a52"]
+ },
+ {
+  "slug": "superhuman",
+  "title": "Superhuman",
+  "summary": "Grammarly, Coda, and Superhuman were becoming one company, and the brand had to hold all three without flattening any of them. I joined Smith & Diction midway, once the core identity was set and the harder problem was everything around the logo. I helped concept and build a layered visual language that works across product, marketing, and physical space, and stretches to every product in the family. To keep it consistent without getting repetitive, I built a set of generative tools that produce a wide range of assets from the same underlying rules.",
+  "role": "Art director",
+  "with": "Smith & Diction",
+  "year": "2025",
+  "client": "Superhuman",
+  "lede": "Art direction and visual system design for the rebrand of Grammarly, Coda, and Superhuman.",
+  "body": [
+   "I joined Smith & Diction midway through the Superhuman rebrand, after the core identity was in place. The work centered on merging Grammarly, Coda, and Superhuman into one cohesive brand, a process that was deceptively complex. The challenge was no longer the logo itself, but everything around it, and how a scalable visual language system could hold together across product, marketing, and physical spaces.",
+   "My role was to concept and help build that <b>visual system</b>. I worked closely with the team to develop a layered approach that could scale across a global brand without becoming rigid or repetitive.",
+   "As part of that work, I also built a set of <b>generative tools</b> that could produce a wide range of assets while still following the same underlying rules. The goal was consistency without sameness, and a system strong enough to adapt as the brand and its surfaces continued to grow."
+  ],
+  "credits": [
+   ["Done while working with", "Smith & Diction"]
+  ],
+  "link": null
+ },
+ {
+  "slug": "lululemon",
+  "title": "Lululemon Mirror",
+  "summary": "Mirror had plenty of data and one real goal: get people to come back tomorrow. When it introduced the Total Health Score, a blend of heart, muscle, and recovery, the number needed to feel like encouragement. We built a full visual system for it inside the product UI, from a single workout readout to long-term progress. Each pillar got its own visual behavior, and together they roll up into one score people actually want to move.",
+  "role": "Creative director",
+  "with": "Datalands",
+  "year": "",
+  "client": "Lululemon Studio",
+  "lede": "Establishing a visual performance dashboard for an exciting new fitness hardware.",
+  "body": [
+   "We partnered with Lululemon Studio (FKA Mirror) to re-think and improve the in-product UI & UX for tracking workouts, progress and milestones.",
+   "When Mirror unveiled their Total Health Score (THS)—a thoughtful blend of three wellness pillars: Heart, Muscle, and Recovery—it was clear that such a nuanced system needed a touch of clarity and engagement. With the Mirror leadership team at the helm, our goal was to craft a lively, interactive visualization that would feel right at home within the existing product UI."
+  ],
+  "credits": [
+   ["Creative direction", "Gavin Potenza, Leandro Castelao"],
+   ["Design", "Leandro Castelao, Gavin Potenza, Francisco Roca, Liz Meyer"],
+   ["Producer", "Allison Usavage"],
+   ["Client CD", "Kevin Twohy"]
+  ],
+  "link": null
+ },
+ {
+  "slug": "nike",
+  "title": "Nike",
+  "summary": "Nike needed its data to look like Nike, whether it showed up in a social post or an internal review. We built one visualization system organized in three tiers. A simple version for social, a sharper one for presentations and marketing reporting, and a detailed version for internal comms. Same visual logic at every level, so the audience changes and the system holds.",
+  "role": "Creative director",
+  "with": "Datalands",
+  "year": "",
+  "client": "Nike",
+  "lede": "Overhauling how a beloved sportswear company visualizes data.",
+  "body": [
+   "Our approach led us to establishing 3 tiers of visualization: a simple social execution, a version for presentations and marketing reporting, and a more detailed version for internal communications."
+  ],
+  "credits": [
+   ["Creative direction", "Gavin Potenza"],
+   ["Design", "Gavin Potenza, Francisco Roca, Liz Meyer"]
+  ],
+  "link": null
+ },
+ {
+  "slug": "microsoft",
+  "title": "Microsoft Praise",
+  "summary": "How do you draw courage? Microsoft Praise lets people thank each other for things that don’t come with an obvious picture, like inclusion, kindness, or being a great teammate. We created a family of ownable, emotional symbols for those moments, built to live across Microsoft’s many platforms. The set works in flat and 3D, and feels universal without feeling generic.",
+  "role": "Creative director",
+  "with": "Datalands",
+  "year": "",
+  "client": "Microsoft",
+  "lede": "Reimagining how a Fortune 50 brand visually communicates key user moments.",
+  "body": [
+   "Our exploration began with icons to visually represent abstract, emotional-driven moments in a person’s life, and to create unique and ownable shapes that Microsoft could use across their many designed platforms.",
+   "With concepts ranging from inclusion to courage, the goal was to create a more universal and emotional set of symbols for people to express gratitude to one another."
+  ],
+  "credits": [
+   ["Creative direction", "Gavin Potenza, Leandro Castelao"],
+   ["Design", "Gavin Potenza, Leandro Castelao, Francisco Roca"],
+   ["3D", "Danil Tabacari"],
+   ["Producer", "Allison Usavage"]
+  ],
+  "link": null
+ },
+ {
+  "slug": "volta",
+  "title": "Volta Charging",
+  "summary": "Volta Charging had just rebuilt its brand, and data visualization was the missing piece. Over two months, we developed an ownable data viz system, motion included. It launched through a marcom landing page and social campaign built on Volta’s climate consciousness research. The charts had to make the case on their own: climate-conscious consumers up nearly 15% since 2021, in red states and blue states alike.",
+  "role": "Creative director",
+  "with": "Datalands",
+  "year": "2022",
+  "client": "Volta Charging",
+  "lede": "A comprehensive report and social campaign for CPG climate consciousness.",
+  "body": [
+   "Between 2021 and 2022, Volta Charging underwent a full brand overhaul. Discovering a missing piece in the area of data visualization, they asked Datalands to establish a system to define what data visualization looks like for this new era of Volta.",
+   "With a firm deliverable of Volta’s annual PDF report, “The Brave New World of Climate Consciousness”, we began a 2 month design systems exercise in establishing ownable visualization styles, including motion design, for all data viz across the Volta brand."
+  ],
+  "credits": [
+   ["Creative direction", "Gavin Potenza"],
+   ["Art direction", "Liz Meyer"],
+   ["Design", "Gavin Potenza, Francisco Roca, Katie Schallick"],
+   ["Producer", "Kali Washington"]
+  ],
+  "link": null
+ },
+ {
+  "slug": "dnd",
+  "title": "Dreams Never Die",
+  "summary": "Dreams Never Die is an artist-first music label, and the brand needed the same energy as the people on it. We built an identity with real attitude: a warped, stretchy wordmark, loud illustration, and a system loose enough to go from digital drops to merch.",
+  "role": "Creative director",
+  "with": "Datalands",
+  "year": "",
+  "client": "Dreams Never Die",
+  "lede": "Branding a web3 artist-first music label.",
+  "body": [],
+  "credits": [
+   ["Design", "Gavin Potenza, Francisco Roca, Liz Meyer"]
+  ],
+  "link": null
+ }
+]

@@ -1,0 +1,508 @@
+{
+ "calendly": [
+  {
+   "type": "image",
+   "src": "assets/media/calendly/calendly-04.jpg",
+   "w": 2400,
+   "h": 1350
+  },
+  {
+   "type": "image",
+   "src": "assets/media/calendly/calendly-01.jpg",
+   "w": 2400,
+   "h": 1350
+  },
+  {
+   "type": "image",
+   "src": "assets/media/calendly/calendly-02.jpg",
+   "w": 2400,
+   "h": 1412
+  },
+  {
+   "type": "pair",
+   "items": [
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-patterns-l.mp4",
+     "poster": "assets/media/calendly/calendly-patterns-l-poster.jpg",
+     "w": 1080,
+     "h": 1350
+    },
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-patterns-r.mp4",
+     "poster": "assets/media/calendly/calendly-patterns-r-poster.jpg",
+     "w": 1080,
+     "h": 1350
+    }
+   ],
+   "w": 1600,
+   "h": 1000
+  },
+  {
+   "type": "image",
+   "src": "assets/media/calendly/calendly-03.jpg",
+   "w": 2400,
+   "h": 1350
+  },
+  {
+   "type": "pair",
+   "items": [
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-07.mp4",
+     "poster": "assets/media/calendly/calendly-07-poster.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "type": "image",
+     "src": "assets/media/calendly/calendly-08.webp",
+     "w": 1080,
+     "h": 1440
+    }
+   ],
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "type": "video",
+   "src": "assets/media/calendly/calendly-subproduct.mp4",
+   "poster": "assets/media/calendly/calendly-subproduct-poster.jpg",
+   "w": 1600,
+   "h": 900
+  },
+  {
+   "type": "pair",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/media/calendly/calendly-ui.jpg",
+     "w": 1500,
+     "h": 2000
+    },
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-12.mp4",
+     "poster": "assets/media/calendly/calendly-12-poster.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ],
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "type": "video",
+   "src": "assets/media/calendly/calendly-colorpicker.mp4",
+   "poster": "assets/media/calendly/calendly-colorpicker-poster.jpg",
+   "w": 1600,
+   "h": 900
+  },
+  {
+   "type": "pair",
+   "items": [
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-blocks-l.mp4",
+     "poster": "assets/media/calendly/calendly-blocks-l-poster.jpg",
+     "w": 1080,
+     "h": 1440
+    },
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-blocks-r.mp4",
+     "poster": "assets/media/calendly/calendly-blocks-r-poster.jpg",
+     "w": 1080,
+     "h": 1440
+    }
+   ],
+   "w": 1500,
+   "h": 1000
+  },
+  {
+   "type": "video",
+   "src": "assets/media/tools/patternly.mp4",
+   "poster": "assets/media/tools/patternly-poster.jpg",
+   "w": 1280,
+   "h": 720
+  },
+  {
+   "type": "pair",
+   "items": [
+    {
+     "type": "image",
+     "src": "assets/media/calendly/calendly-16.jpg",
+     "w": 1931,
+     "h": 2400
+    },
+    {
+     "type": "video",
+     "src": "assets/media/calendly/calendly-inproduct.mp4",
+     "poster": "assets/media/calendly/calendly-inproduct-poster.jpg",
+     "w": 1254,
+     "h": 1440
+    }
+   ],
+   "w": 1675,
+   "h": 1000
+  }
+ ],
+ "superhuman": [
+  {
+   "type": "image",
+   "src": "assets/media/superhuman/superhuman-01.jpg",
+   "w": 2400,
+   "h": 1339
+  },
+  {
+   "type": "image",
+   "src": "assets/media/superhuman/superhuman-02.jpg",
+   "w": 2400,
+   "h": 1226
+  },
+  {
+   "type": "image",
+   "src": "assets/media/superhuman/superhuman-03.jpg",
+   "w": 2400,
+   "h": 1332
+  },
+  {
+   "type": "video",
+   "src": "assets/media/superhuman/superhuman-04.mp4",
+   "poster": "assets/media/superhuman/superhuman-04-poster.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "type": "video",
+   "src": "assets/media/superhuman/superhuman-05.mp4",
+   "poster": "assets/media/superhuman/superhuman-05-poster.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "type": "video",
+   "src": "assets/media/superhuman/superhuman-06.mp4",
+   "poster": "assets/media/superhuman/superhuman-06-poster.jpg",
+   "w": 1920,
+   "h": 1080
+  }
+ ],
+ "lululemon": [
+  {
+   "type": "image",
+   "src": "assets/media/lululemon/lululemon-01.webp",
+   "w": 1720,
+   "h": 2008
+  },
+  {
+   "type": "image",
+   "src": "assets/media/lululemon/lululemon-02.jpg",
+   "w": 1920,
+   "h": 1920
+  },
+  {
+   "type": "video",
+   "src": "assets/media/lululemon/lululemon-03.mp4",
+   "poster": "assets/media/lululemon/lululemon-03-poster.jpg",
+   "w": 1210,
+   "h": 710
+  }
+ ],
+ "nike": [
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-lead.jpg",
+   "w": 2000,
+   "h": 1020
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-01.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-02.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-03.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "video",
+   "src": "assets/media/nike/nike-04.mp4",
+   "poster": "assets/media/nike/nike-04-poster.jpg",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-05.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-06.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-07.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-08.webp",
+   "w": 1350,
+   "h": 2400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-09.webp",
+   "w": 1350,
+   "h": 2400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-10.webp",
+   "w": 2400,
+   "h": 1714
+  },
+  {
+   "type": "image",
+   "src": "assets/media/nike/nike-11.webp",
+   "w": 2400,
+   "h": 1714
+  }
+ ],
+ "microsoft": [
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-01.jpg",
+   "w": 1920,
+   "h": 1440
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-02.webp",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-03.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-04.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-05.webp",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-06.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-07.webp",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-08.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-09.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-10.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-11.webp",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-12.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-13.webp",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-14.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-15.webp",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-16.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-17.jpg",
+   "w": 1400,
+   "h": 1400
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-18.webp",
+   "w": 2400,
+   "h": 655
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-19.webp",
+   "w": 2108,
+   "h": 656
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-20.webp",
+   "w": 2108,
+   "h": 1453
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-21.webp",
+   "w": 2108,
+   "h": 1452
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-22.webp",
+   "w": 2108,
+   "h": 1452
+  },
+  {
+   "type": "image",
+   "src": "assets/media/microsoft/microsoft-23.jpg",
+   "w": 2400,
+   "h": 1581
+  }
+ ],
+ "volta": [
+  {
+   "type": "image",
+   "src": "assets/media/volta/volta-01.jpg",
+   "w": 2400,
+   "h": 1262
+  },
+  {
+   "type": "image",
+   "src": "assets/media/volta/volta-02.jpg",
+   "w": 2400,
+   "h": 1345
+  },
+  {
+   "type": "video",
+   "src": "assets/media/volta/volta-03.mp4",
+   "poster": "assets/media/volta/volta-03-poster.jpg",
+   "w": 1920,
+   "h": 1280
+  },
+  {
+   "type": "video",
+   "src": "assets/media/volta/volta-04.mp4",
+   "poster": "assets/media/volta/volta-04-poster.jpg",
+   "w": 1590,
+   "h": 1590
+  },
+  {
+   "type": "video",
+   "src": "assets/media/volta/volta-05.mp4",
+   "poster": "assets/media/volta/volta-05-poster.jpg",
+   "w": 1590,
+   "h": 1590
+  },
+  {
+   "type": "video",
+   "src": "assets/media/volta/volta-06.mp4",
+   "poster": "assets/media/volta/volta-06-poster.jpg",
+   "w": 1590,
+   "h": 1590
+  }
+ ],
+ "dnd": [
+  {
+   "type": "image",
+   "src": "assets/media/dnd/dnd-01.webp",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "type": "image",
+   "src": "assets/media/dnd/dnd-02.webp",
+   "w": 1920,
+   "h": 1080
+  },
+  {
+   "type": "image",
+   "src": "assets/media/dnd/dnd-03.webp",
+   "w": 1920,
+   "h": 1081
+  },
+  {
+   "type": "image",
+   "src": "assets/media/dnd/dnd-04.webp",
+   "w": 955,
+   "h": 588
+  },
+  {
+   "type": "image",
+   "src": "assets/media/dnd/dnd-05.webp",
+   "w": 955,
+   "h": 588
+  },
+  {
+   "type": "image",
+   "src": "assets/media/dnd/dnd-06.webp",
+   "w": 1920,
+   "h": 1080
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+# Repo files that aren't part of the site
+.git
+.gitignore
+.assetsignore
+content
+tools
+README.md
+wrangler.jsonc

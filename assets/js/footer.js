@@ -1,0 +1,96 @@
+/* Footer: version line + changelog overlay, PO Box overlay, copy-email. */
+(function () {
+  var el = document.querySelector('.ft-base');
+  if (!el) return;
+  var root = document.documentElement;
+  var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* version line: the build hash changes whenever the bio or archive copy does */
+  var meta = el.querySelector('.ft-meta');
+  var up = new Date(el.dataset.updated + 'T12:00:00');
+  var src = Array.prototype.map.call(document.querySelectorAll('.ed-set, .arc'), function (e) { return e.textContent; }).join('|');
+  var h = 5381; for (var i = 0; i < src.length; i++) { h = ((h << 5) + h + src.charCodeAt(i)) >>> 0; }
+  meta.textContent = 'v' + el.dataset.version + ', updated ' +
+    up.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) +
+    ', build ' + h.toString(16).slice(-6);
+
+  /* overlays live on <html>, above everything */
+  function overlay(html) {
+    var o = document.createElement('ft-log'); o.innerHTML = html; o.setAttribute('aria-live', 'polite'); root.appendChild(o);
+    o.querySelectorAll('.t').forEach(function (t) { t.dataset.full = t.textContent; t.textContent = ''; });
+    return o;
+  }
+  var logO = overlay(el.querySelector('.ft-entries').innerHTML);
+  var lines = (el.querySelector('.ft-address').dataset.lines || '').split('|').join('\n');
+  var addrO = overlay('<span class="e changelog"><span class="v"></span><span class="t"></span></span>'); // the address starts with "PO Box", so no label
+  addrO.querySelector('.t').dataset.full = lines;
+  var overlays = [logO, addrO];
+
+  /* snap the overlay to the header grid: labels under the name, text under the nav */
+  function align() {
+    var c1 = document.querySelector('.top-name'), c2 = document.querySelector('.top-nav');
+    overlays.forEach(function (o) { o.style.removeProperty('--pad-l'); o.style.removeProperty('--ver-col'); });
+    if (!c1 || !c2) return;
+    var l = c1.getBoundingClientRect().left, r = c2.getBoundingClientRect().left;
+    if (r - l < 40) return;
+    overlays.forEach(function (o) { o.style.setProperty('--pad-l', l + 'px'); o.style.setProperty('--ver-col', (r - l) + 'px'); });
+  }
+  addEventListener('resize', align);
+
+  /* typewriter: entries appear one after another, each typed out */
+  function type(o, on) {
+    clearInterval(o._t);
+    var ts = [].slice.call(o.querySelectorAll('.t')), es = [].slice.call(o.querySelectorAll('.e'));
+    ts.forEach(function (t) { t.textContent = ''; }); es.forEach(function (e) { e.classList.remove('go'); });
+    if (!on) return;
+    if (still) { ts.forEach(function (t) { t.textContent = t.dataset.full; }); es.forEach(function (e) { e.classList.add('go'); }); return; }
+    var k = 0, n = 0; if (es[0]) es[0].classList.add('go');
+    o._t = setInterval(function () {
+      var t = ts[k]; if (!t) { clearInterval(o._t); return; }
+      n++; t.textContent = t.dataset.full.slice(0, n);
+      if (n >= t.dataset.full.length) { k++; n = 0; if (es[k]) es[k].classList.add('go'); }
+    }, 22);
+  }
+
+  var active = null, pinned = false;
+  function show(o, trigger, on) {
+    if (on) align();
+    o.classList.toggle('on', on);
+    trigger.setAttribute('aria-expanded', String(on));
+    type(o, on);
+    active = on ? { o: o, t: trigger } : null;
+  }
+  function hideAll() { if (active) show(active.o, active.t, false); pinned = false; }
+  function bind(trigger, o) {
+    trigger.addEventListener('mouseenter', function () { if (!pinned) { if (active) show(active.o, active.t, false); show(o, trigger, true); } });
+    trigger.addEventListener('mouseleave', function () { if (!pinned) show(o, trigger, false); });
+    function toggle() { var on = !(pinned && active && active.o === o); hideAll(); if (on) { pinned = true; show(o, trigger, true); } }
+    trigger.addEventListener('click', function (e) { e.stopPropagation(); toggle(); });
+  }
+  bind(meta, logO);
+  var po = document.querySelector('.ft-po'); if (po) bind(po, addrO);
+  document.addEventListener('click', function () { if (pinned) hideAll(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hideAll(); });
+
+  addEventListener('scroll', function () { if (pinned) hideAll(); }, { passive: true });
+
+  /* email: "Copy" on hover, "Copied" on click (label comes from data-label, so it can't get stuck) */
+  var em = document.querySelector('.ft-email');
+  if (em) {
+    var label = em.dataset.label || '↖Email', addr = em.dataset.email, timer, copied = false, over = false;
+    function paint() { em.textContent = copied ? '↖Copied' : over ? '↖Copy' : label; }
+    paint();
+    function copy() {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(addr).then(function () {
+          copied = true; paint(); clearTimeout(timer);
+          var st = document.getElementById('ft-status'); if (st) { st.textContent = ''; st.textContent = 'Email address copied'; }
+          timer = setTimeout(function () { copied = false; paint(); }, 1600);
+        }, function () { location.href = 'mailto:' + addr; });
+      } else { location.href = 'mailto:' + addr; }
+    }
+    ['mouseenter', 'focus'].forEach(function (t) { em.addEventListener(t, function () { over = true; paint(); }); });
+    ['mouseleave', 'blur'].forEach(function (t) { em.addEventListener(t, function () { over = false; paint(); }); });
+    em.addEventListener('click', function (e) { e.stopPropagation(); copy(); });
+  }
+})();
