@@ -166,7 +166,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed-list .item > a:only-child { overflow-wrap: anywhere; }
 .ed .y { font-style: italic; opacity: var(--soft); white-space: nowrap; }
 .ed .d { opacity: var(--soft); }
-.ed a.clip-trigger { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-skip-ink: auto; }
+.ed a.clip-trigger { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-position: from-font; text-underline-offset: -.1em; text-decoration-skip-ink: auto; }   /* same line as the other links, so descenders cut gaps in it */
 .ed .alt-body a, .ed .copy-email { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-decoration-skip-ink: auto; transition: text-decoration-color .15s ease-out; }
 
 /* ---------- work ----------
