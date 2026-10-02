@@ -16,7 +16,7 @@
 
   /* overlays live on <html>, above everything */
   function overlay(html) {
-    var o = document.createElement('ft-log'); o.innerHTML = html; o.setAttribute('aria-live', 'polite'); root.appendChild(o);
+    var o = document.createElement('ft-log'); o.innerHTML = html; o.setAttribute('aria-hidden', 'true'); root.appendChild(o);
     o.querySelectorAll('.t').forEach(function (t) { t.dataset.full = t.textContent; t.textContent = ''; });
     return o;
   }
@@ -58,6 +58,9 @@
     o.classList.toggle('on', on);
     trigger.setAttribute('aria-expanded', String(on));
     type(o, on);
+    // the overlay types itself out visually; screen readers get the whole text once
+    var st = document.getElementById('ft-status');
+    if (st && on) { st.textContent = ''; st.textContent = [].map.call(o.querySelectorAll('.e'), function (e) { return [e.querySelector('.v').textContent, e.querySelector('.t').dataset.full].join(' ').trim(); }).join(' '); }
     active = on ? { o: o, t: trigger } : null;
   }
   function hideAll() { if (active) show(active.o, active.t, false); pinned = false; }
@@ -77,8 +80,8 @@
   /* email: "Copy" on hover, "Copied" on click (label comes from data-label, so it can't get stuck) */
   var em = document.querySelector('.ft-email');
   if (em) {
-    var label = em.dataset.label || '↖Email', addr = em.dataset.email, timer, copied = false, over = false;
-    function paint() { em.textContent = copied ? '↖Copied' : over ? '↖Copy' : label; }
+    var label = em.dataset.label || 'Email', addr = em.dataset.email, timer, copied = false, over = false;
+    function paint() { em.innerHTML = '<span aria-hidden="true">↖</span>' + (copied ? 'Copied' : over ? 'Copy' : label); }
     paint();
     function copy() {
       if (navigator.clipboard && window.isSecureContext) {

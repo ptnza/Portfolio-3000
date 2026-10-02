@@ -240,6 +240,7 @@
     var el = e.currentTarget;
     if (cImg.getAttribute('src') !== el.dataset.clip) cImg.src = el.dataset.clip;
     cCap.textContent = el.dataset.clipBy || '';
+    if (e.type === 'focus') { var r = el.getBoundingClientRect(); e = { clientX: r.left + r.width / 2, clientY: r.top }; } // keyboard: float over the link
     mx = C.x = e.clientX; my = C.y = e.clientY; C.on = true; run();
   }
   function leaveClip() { C.on = false; run(); }
@@ -260,8 +261,10 @@
 
   document.querySelectorAll('[data-clip], [data-quad], [data-center]').forEach(function (el) {
     var d = el.dataset;
-    if (d.clip) { preload(d.clip); el.addEventListener('mouseenter', enterClip); el.addEventListener('mouseleave', leaveClip); }
-    else if (d.quad) { preload(d.quad.trim()); el.addEventListener('mouseenter', enterQuad); el.addEventListener('mouseleave', leaveBg); }
-    else { preload(d.center.trim(), true); el.addEventListener('mouseenter', enterCenter); el.addEventListener('mouseleave', leaveBg); }
+    // hover and keyboard focus show the same image
+    function on(enter, leave) { el.addEventListener('mouseenter', enter); el.addEventListener('focus', function (e) { if (el.matches(':focus-visible')) enter(e); }); el.addEventListener('mouseleave', leave); el.addEventListener('blur', leave); }
+    if (d.clip) { preload(d.clip); on(enterClip, leaveClip); }
+    else if (d.quad) { preload(d.quad.trim()); on(enterQuad, leaveBg); }
+    else { preload(d.center.trim(), true); on(enterCenter, leaveBg); }
   });
 })();

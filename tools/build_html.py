@@ -53,8 +53,9 @@ def item(p, slides):
     alts = p.get('alts', [])  # optional: one description per slide, in slide order
     slides_html = '\n'.join(slide(s, i, n, p['title'], i == 0, ratio, alts[i] if i < len(alts) else '') for i, s in enumerate(slides))
     controls = '' if n < 2 else (
-        f'<button class="ss-hit ss-hit-prev" type="button" aria-label="Previous image" tabindex="-1"></button>'
-        f'<button class="ss-hit ss-hit-next" type="button" aria-label="Next image" tabindex="-1"></button>')
+        # click halves for the mouse; keyboard and screen readers use the arrows below
+        f'<div class="ss-hit ss-hit-prev" aria-hidden="true"></div>'
+        f'<div class="ss-hit ss-hit-next" aria-hidden="true"></div>')
     bar = '' if n < 2 else (
         f'<div class="ss-bar alt-body"><span class="ss-count" aria-live="polite">01 / {n:02d}</span>'
         f'<span class="ss-nav"><button class="ss-prev" type="button" aria-label="Previous image">←</button>'

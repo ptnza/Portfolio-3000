@@ -35,8 +35,8 @@
   --bg: #f3f1ec;
   --fg: rgba(0, 0, 0, .88);
   --line: rgba(0, 0, 0, .16);
-  --underline: rgba(0, 0, 0, .4);
-  --underline-soft: rgba(0, 0, 0, .3);
+  --underline: rgba(0, 0, 0, .45);           /* 3.3:1: the only cue on same-colour links */
+  --underline-soft: rgba(0, 0, 0, .45);
   --well: rgba(0, 0, 0, .05);
   --img-outline: oklch(0 0 0 / .1);           /* pure black in light */
   --soft: .65;    /* 5.0:1 on paper */
@@ -45,7 +45,7 @@
 
 /* Type scales with the window */
 html {
-  font-size: clamp(10px, 1.08vw, 17px); background: var(--bg);
+  font-size: clamp(.625rem, 1.08vw, 1.0625rem);   /* rem here = the reader's browser setting */ background: var(--bg);
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -70,6 +70,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 img, video { display: block; max-width: 100%; }
 p { margin: 0; }
+ul.alt-body { list-style: none; margin: 0; padding: 0; }
 
 /* ---------- text styles ---------- */
 h1, h2 { margin: 0; font: inherit; }
@@ -335,6 +336,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 
 /* ---------- footer ---------- */
 footer { font-weight: 350; }
+.ft-base { font-weight: 400; }   /* 350 is for display sizes only */
 .ft { border-top: 1px solid var(--line); padding-top: 8rem; margin-bottom: 9rem; }
 .ft-big { display: block; text-align: center; text-wrap: balance; }
 .ft-big a, .ft-btn { transition: opacity .15s ease-out; }
@@ -400,7 +402,7 @@ ft-log .t { white-space: pre-line; }
 
 /* ---------- mobile ---------- */
 @media (max-width: 768px) {
-  html { font-size: 13px; }
+  html { font-size: .8125rem; }
   .top { grid-template-columns: 1fr auto auto; column-gap: 1.25rem; }
   .top-mail { grid-column: 3; }
   .top-nav { gap: 1.5em; justify-self: end; }
