@@ -132,7 +132,7 @@ h1 a.clip-trigger {
   text-underline-position: from-font;
   text-decoration-thickness: from-font;
   text-decoration-skip-ink: auto;
-  text-underline-offset: .12em;
+  text-underline-offset: -.02em;   /* tucked just under the baseline; skip-ink clears the descenders */
 }
 
 /* floating clipping (position and motion come from the script) */
