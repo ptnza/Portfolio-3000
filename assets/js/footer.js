@@ -77,23 +77,29 @@
 
   addEventListener('scroll', function () { if (pinned) hideAll(); }, { passive: true });
 
-  /* email: "Copy" on hover, "Copied" on click (label comes from data-label, so it can't get stuck) */
-  var em = document.querySelector('.ft-email');
-  if (em) {
-    var label = em.dataset.label || 'Email', addr = em.dataset.email, timer, copied = false, over = false;
-    function paint() { em.innerHTML = '<span aria-hidden="true">↖</span>' + (copied ? 'Copied' : over ? 'Copy' : label); }
-    paint();
-    function copy() {
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(addr).then(function () {
-          copied = true; paint(); clearTimeout(timer);
-          var st = document.getElementById('ft-status'); if (st) { st.textContent = ''; st.textContent = 'Email address copied'; }
-          timer = setTimeout(function () { copied = false; paint(); }, 1600);
-        }, function () { location.href = 'mailto:' + addr; });
-      } else { location.href = 'mailto:' + addr; }
+  /* email: every address on the page copies instead of opening a mail app.
+     The footer word shows "Copy" on hover; all of them show "Copied" after a click. */
+  var st = document.getElementById('ft-status');
+  document.querySelectorAll('[data-email]').forEach(function (em) {
+    var addr = em.dataset.email, arrow = em.classList.contains('ft-email'), rest = em.textContent, timer, copied = false, over = false;
+    function paint() {
+      var word = copied ? 'Copied' : arrow && over ? 'Copy' : arrow ? 'Email' : rest;
+      if (arrow) em.innerHTML = '<span aria-hidden="true">↖</span>' + word; else em.textContent = word;
     }
-    ['mouseenter', 'focus'].forEach(function (t) { em.addEventListener(t, function () { over = true; paint(); }); });
-    ['mouseleave', 'blur'].forEach(function (t) { em.addEventListener(t, function () { over = false; paint(); }); });
+    function copy() {
+      if (!(navigator.clipboard && window.isSecureContext)) { location.href = 'mailto:' + addr; return; }
+      navigator.clipboard.writeText(addr).then(function () {
+        if (!arrow && !copied) em.style.minWidth = em.offsetWidth + 'px';   // "Copied" is shorter: keep the width so nothing shifts
+        copied = true; paint(); clearTimeout(timer);
+        if (st) { st.textContent = ''; st.textContent = 'Email address copied'; }
+        timer = setTimeout(function () { copied = false; paint(); em.style.minWidth = ''; }, 1600);
+      }, function () { location.href = 'mailto:' + addr; });
+    }
+    if (arrow) {
+      ['mouseenter', 'focus'].forEach(function (t) { em.addEventListener(t, function () { over = true; paint(); }); });
+      ['mouseleave', 'blur'].forEach(function (t) { em.addEventListener(t, function () { over = false; paint(); }); });
+    }
     em.addEventListener('click', function (e) { e.stopPropagation(); copy(); });
-  }
+    paint();
+  });
 })();

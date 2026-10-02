@@ -70,7 +70,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 img, video { display: block; max-width: 100%; }
 p { margin: 0; }
-ul.alt-body { list-style: none; margin: 0; padding: 0; }
+.ed-sec > ul { list-style: none; margin: 0; padding: 0; }
 
 /* ---------- text styles ---------- */
 h1, h2 { margin: 0; font: inherit; }
@@ -102,7 +102,7 @@ h1 {
   color: #fff; /* stays white: the difference blend darkens it over a light page */
 }
 .top-nav { display: flex; gap: 3.5em; }
-.top-nav a, .top-name a, .top-mail > a { white-space: nowrap; display: inline-block; padding-block: 12px; margin-block: -12px; } /* 40px tall targets, same line box */
+.top-nav a, .top-name a, .top-mail > .copy-email { white-space: nowrap; display: inline-block; padding-block: 12px; margin-block: -12px; } /* 40px tall targets, same line box */
 .top-nav a { padding-inline: 8px; margin-inline: -8px; }  /* short words get 40px+ widths too; the 3.5em gaps keep them apart */
 .top-mail { grid-column: 4; display: flex; justify-content: flex-end; align-items: center; gap: 1.1em; }
 
@@ -167,7 +167,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed .y { font-style: italic; opacity: var(--soft); white-space: nowrap; }
 .ed .d { opacity: var(--soft); }
 .ed a.clip-trigger { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-skip-ink: auto; }
-.ed .alt-body a { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-decoration-skip-ink: auto; transition: text-decoration-color .15s ease-out; }
+.ed .alt-body a, .ed .copy-email { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-decoration-skip-ink: auto; transition: text-decoration-color .15s ease-out; }
 
 /* ---------- work ----------
    One 5-track grid: gutter | title | description | credits | gutter.
@@ -289,6 +289,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .arc[data-size="l"] .arc-img { width: 100%; }
 
 /* ---------- slideshow ---------- */
+.copy-email { text-align: start; }
 .ss, .ss-nav button, .arc-btn, .theme-btn, .tools-bar button { user-select: none; -webkit-user-select: none; }  /* rapid clicks and swipes shouldn't select words */
 .ss {
   position: relative;
@@ -375,9 +376,9 @@ ft-log .t { white-space: pre-line; }
 
 /* ---------- hover: pointer devices only, so a tap never leaves an item looking selected ---------- */
 @media (hover: hover) {
-  .top a:hover { opacity: .6; }
+  .top a:hover, .top .copy-email:hover { opacity: .6; }
   .theme-btn:hover i { opacity: 1; }
-  .ed .alt-body a:hover { text-decoration-color: currentColor; }
+  .ed .alt-body a:hover, .ed .copy-email:hover { text-decoration-color: currentColor; }
   .arc-btn:hover { border-color: var(--underline); }
   .arc-btn:hover > span { opacity: 1; }
   .arc-btn.is-on:hover { border-color: var(--fg); }
@@ -406,7 +407,7 @@ ft-log .t { white-space: pre-line; }
   .top { grid-template-columns: 1fr auto auto; column-gap: 1.25rem; }
   .top-mail { grid-column: 3; }
   .top-nav { gap: 1.5em; justify-self: end; }
-  .top-mail > a { display: none; }
+  .top-mail > .copy-email { display: none; }
   :root { --text-display: 22px; --text-body-sm: 1rem; --text-footer: 3.6rem; --text-overlay: 4.5rem; }
   .bio-section { display: block; margin-top: 4rem; margin-bottom: 6rem; }
   .ed-set { grid-template-columns: 1fr; margin-top: 4rem; }
