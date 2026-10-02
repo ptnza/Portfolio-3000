@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Optimise portfolio media from the Cargo export into assets/media/<project>/.
+"""Optimise portfolio media from the original export into assets/media/<project>/.
 
 Usage: python3 tools/build_media.py [path-to-portfolio-content] [slug ...]
 Needs ffmpeg/ffprobe (brew install ffmpeg) and macOS sips.

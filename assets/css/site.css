@@ -1,6 +1,4 @@
 /* ---------- tokens ----------
-   Font: the Cargo build used Favorit (licensed through Cargo). To switch back,
-   add an @font-face for your licensed Favorit woff2 and put it first in --font.
    Theme: one switch, [data-theme] on <html>. The head script opens every visit dark; the toggle
    (theme.js) switches for that visit. */
 :root {
@@ -11,9 +9,9 @@
   --underline: rgba(255, 255, 255, .45);
   --underline-soft: rgba(255, 255, 255, .35);
   --well: rgba(255, 255, 255, .06);            /* empty image slots */
-  --img-outline: rgba(255, 255, 255, .08);     /* hairline on images */
+  --img-outline: oklch(1 0 0 / .1);           /* hairline on images: pure white in dark */
   --soft: .55;    /* secondary text: 5.5:1 */
-  --faint: .52;   /* tertiary text: 4.98:1 (was .4, 3.28:1) */
+  --faint: .52;   /* tertiary text: 4.98:1 */
   --pad: 1rem;
   --gap: 1.25rem;
   /* type scale: every size on the site comes from here, named by use */
@@ -40,12 +38,12 @@
   --underline: rgba(0, 0, 0, .4);
   --underline-soft: rgba(0, 0, 0, .3);
   --well: rgba(0, 0, 0, .05);
-  --img-outline: rgba(0, 0, 0, .08);
-  --soft: .65;    /* 5.0:1 on paper (.55 was 3.68:1) */
-  --faint: .65;   /* 5.0:1 (.4 was 2.43:1) */
+  --img-outline: oklch(0 0 0 / .1);           /* pure black in light */
+  --soft: .65;    /* 5.0:1 on paper */
+  --faint: .65;   /* 5.0:1 */
 }
 
-/* Type scales with the window, like Cargo's rem */
+/* Type scales with the window */
 html {
   font-size: clamp(10px, 1.08vw, 17px); background: var(--bg);
   -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
@@ -73,7 +71,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 img, video { display: block; max-width: 100%; }
 p { margin: 0; }
 
-/* ---------- text styles (from the Cargo build) ---------- */
+/* ---------- text styles ---------- */
 h1, h2 { margin: 0; font: inherit; }
 h1 {
   font-weight: 350;
@@ -159,7 +157,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed { display: flex; flex-direction: column; gap: 2.5rem; }
 .ed .label { margin-bottom: .75em; }
 .ed .alt-body { hanging-punctuation: first; }
-.ed-p { display: block; line-height: var(--leading-body); overflow-wrap: break-word; }
+.ed-p { display: block; line-height: var(--leading-body); overflow-wrap: break-word; text-wrap: pretty; }
 .ed-p + .ed-p { text-indent: 1.4em; }
 .ed-idx .row { display: grid; grid-template-columns: 3.6em 1fr; column-gap: .5em; }
 .ed-list .item { display: block; text-wrap: pretty; }          /* flush-left list, no year column (Press) */
@@ -222,7 +220,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   margin-bottom: 2.5rem;
 }
 .arc-head::before { content: ""; grid-column: 2 / 5; grid-row: 1; border-top: 1px solid var(--line); margin-bottom: .9em; }
-.arc-title { grid-column: 2; grid-row: 2; padding-right: var(--gap); display: grid; grid-template-columns: 2.4em 1fr; }
+.arc-title { grid-column: 2; grid-row: 2; padding-right: var(--gap); display: grid; grid-template-columns: 2.4em 1fr; text-wrap: balance; }
 .arc-title::before { content: counter(arc, decimal-leading-zero); opacity: var(--faint); }
 .arc-desc { grid-column: 3; grid-row: 2; max-width: 30em; line-height: var(--leading-body); text-wrap: pretty; overflow-wrap: break-word; } /* ≈ 72–74 characters in Inter Tight: the top of 60–75 */
 .arc-meta { grid-column: 4; grid-row: 2; padding-left: calc(var(--gap) * 1.5); display: grid; grid-template-columns: 3em 1fr; row-gap: .1em; align-content: start; }
@@ -336,7 +334,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ss-play[hidden] { display: none; }
 
 /* ---------- footer ---------- */
-footer { font-weight: 350; } /* footer typography is out of scope for the type pass */
+footer { font-weight: 350; }
 .ft { border-top: 1px solid var(--line); padding-top: 8rem; margin-bottom: 9rem; }
 .ft-big { display: block; text-align: center; text-wrap: balance; }
 .ft-big a, .ft-btn { transition: opacity .15s ease-out; }

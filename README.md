@@ -10,7 +10,7 @@ Cloudflare Workers (static assets) from `main` at [gavinpotenza.xyz](https://gav
   `status` (`live` = lime badge, `progress` = outlined badge, blank = none), `url` (blank = no link),
   `image` (16:10, or a video's still frame) and optional `video` (plays on hover). Order = display order.
   Media lives in `assets/media/tools/`.
-- `content/projects.json` — Work copy: summary and role/with/year are rendered. `client`, `lede`, `body`, `credits`, `link` are kept but not shown (the Details drawer was removed).
+- `content/projects.json` — Work copy: summary and role/with/year are rendered. `client`, `lede`, `body`, `credits`, `link` are kept but not shown.
 - `assets/media/<project>/` — optimised slides; `manifest.json` lists them with sizes. Stills are JPG, or
   WebP where the original was a PNG; video is H.264 MP4 with a JPG still frame.
   A slide can be a **pair**: `{"type": "pair", "items": [a, b], "w", "h"}` shows two pieces side by side as one
