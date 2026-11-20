@@ -1,7 +1,7 @@
 /* ---------- fonts ----------
    PP Neue Montreal, self-hosted (licensed web files). Book carries the in-between 350 the
-   bio line and footer use. The family has no ↦ or ↰, so Inter Tight supplies just those two
-   (a &text= subset in index.html). There's no Book italic, so italics are Regular. */
+   bio line and footer use. There's no Book italic, so italics are Regular.
+   Arrows: the family has ← → ↑ ↓ ↗ ↘ ↙ ↖ only; use nothing else. */
 @font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Book.woff2") format("woff2"); font-weight: 350; font-display: swap; }
 @font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
@@ -11,7 +11,7 @@
    Theme: one switch, [data-theme] on <html>. The head script opens every visit dark; the toggle
    (theme.js) switches for that visit. */
 :root {
-  --font: "PP Neue Montreal", "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: "PP Neue Montreal", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --bg: #000;
   --fg: rgba(255, 255, 255, .93);
   --line: rgba(255, 255, 255, .22);
@@ -236,7 +236,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .arc-head::before { content: ""; grid-column: 2 / 5; grid-row: 1; border-top: 1px solid var(--line); margin-bottom: .9em; }
 .arc-title { grid-column: 2; grid-row: 2; padding-right: var(--gap); display: grid; grid-template-columns: 2.4em 1fr; text-wrap: balance; }
 .arc-title::before { content: counter(arc, decimal-leading-zero); opacity: var(--faint); }
-.arc-desc { grid-column: 3; grid-row: 2; max-width: 30em; line-height: var(--leading-body); text-wrap: pretty; overflow-wrap: break-word; } /* ≈ 72–74 characters in Inter Tight: the top of 60–75 */
+.arc-desc { grid-column: 3; grid-row: 2; max-width: 30em; line-height: var(--leading-body); text-wrap: pretty; overflow-wrap: break-word; } /* caps the line length near the top of 60–75 characters */
 .arc-meta { grid-column: 4; grid-row: 2; padding-left: calc(var(--gap) * 1.5); display: grid; grid-template-columns: 3em 1fr; row-gap: .1em; align-content: start; }
 .arc-meta .k { opacity: var(--faint); }
 
