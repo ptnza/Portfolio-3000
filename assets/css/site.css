@@ -175,7 +175,6 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 /* folding lists: a plain heading on wide screens, a tappable row on phones (profile.js) */
 .ed-fold > summary { display: block; list-style: none; cursor: default; }
 .ed-fold > summary::-webkit-details-marker { display: none; }
-.ed-count { display: none; }
 .ed-list .item > a:only-child { overflow-wrap: anywhere; }
 .ed .y { font-style: italic; opacity: var(--soft); white-space: nowrap; }
 .ed .d { opacity: var(--soft); }
@@ -398,6 +397,7 @@ ft-log .t { white-space: pre-line; }
   .arc-title a:hover { opacity: .6; }
   .ss-nav button:hover { opacity: 1; }
   .ft-big a:not([data-quad]):hover, .ft-btn:hover { opacity: .6; }
+  .ed-fold > summary:hover::after { opacity: 1; }
 }
 
 /* ---------- motion: opt-in, only without a reduced-motion preference ---------- */
@@ -410,7 +410,7 @@ ft-log .t { white-space: pre-line; }
   .tool > a:hover .tool-img img { scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ss-slide, .ss-slide.is-on, ft-log, ft-log.on { transition: none; }
+  .ss-slide, .ss-slide.is-on, ft-log, ft-log.on, .ed-fold > summary::after { transition: none; }
   .arc-btn:active, .ss-nav button:active, .theme-btn:active { scale: 1; }
 }
 
@@ -429,16 +429,23 @@ ft-log .t { white-space: pre-line; }
   .ed-fold { border-top: 1px solid var(--line); }
   .ed-set > .ed:last-child .ed-fold:last-child { border-bottom: 1px solid var(--line); }
   .ed-fold > summary { display: flex; align-items: center; gap: .5em; min-height: 44px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .ed-fold > summary .label { margin: 0; margin-inline-end: auto; }   /* count and +/− always sit on the right edge, with or without a count */
-  .ed-count, .ed-fold > summary::after { font-size: var(--text-body-sm); }
-  .ed-count { display: inline; opacity: var(--faint); }
-  .ed-fold > summary::after { content: "+"; width: 1em; text-align: end; }
-  .ed-fold[open] > summary::after { content: "\2212"; }
+  .ed-fold > summary .label { margin: 0; margin-inline-end: auto; }   /* the toggle sits on the right edge */
+  /* the toggle: an 18px round-capped plus in the faint ink that turns 45° into an ×
+     and goes full strength when open; 200ms on the standard curve. The panel's height animates in profile.js. */
+  .ed-fold > summary { min-height: 56px; }
+  .ed-fold > summary::after {
+    content: ""; flex: none; width: 18px; height: 18px;
+    background: currentColor; opacity: var(--faint);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18.5V13H5.5C4.94772 13 4.5 12.5523 4.5 12C4.5 11.4477 4.94772 11 5.5 11H11V5.5C11 4.94772 11.4477 4.5 12 4.5C12.5523 4.5 13 4.94772 13 5.5V11H18.5C19.0523 11 19.5 11.4477 19.5 12C19.5 12.5523 19.0523 13 18.5 13H13V18.5C13 19.0523 12.5523 19.5 12 19.5C11.4477 19.5 11 19.0523 11 18.5Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18.5V13H5.5C4.94772 13 4.5 12.5523 4.5 12C4.5 11.4477 4.94772 11 5.5 11H11V5.5C11 4.94772 11.4477 4.5 12 4.5C12.5523 4.5 13 4.94772 13 5.5V11H18.5C19.0523 11 19.5 11.4477 19.5 12C19.5 12.5523 19.0523 13 18.5 13H13V18.5C13 19.0523 12.5523 19.5 12 19.5C11.4477 19.5 11 19.0523 11 18.5Z'/%3E%3C/svg%3E") center / contain no-repeat;
+    transition-property: rotate, opacity; transition-duration: .2s; transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    will-change: transform;
+  }
+  .ed-fold[open]:not(.is-closing) > summary::after { rotate: 45deg; opacity: 1; }
   .ed-fold[open] > :not(summary) { padding-bottom: 1.25rem; }
   /* inside "Recognition & appearances": plain sub-lists, no row, sign or count of their own */
   .ed-group .ed-fold { border: 0; }
   .ed-group .ed-fold > summary { min-height: 0; cursor: default; }
-  .ed-group .ed-fold > summary::after, .ed-group .ed-fold .ed-count { display: none; }
+  .ed-group .ed-fold > summary::after { display: none; }
   .ed-group .ed-fold > summary .label { margin-bottom: .75em; }
   .ed-group .ed-fold[open] > :not(summary) { padding-bottom: 1.5rem; }
   .arc-desc { font-size: var(--text-body); }   /* 7–10 lines: read at body size, like About */
