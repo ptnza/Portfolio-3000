@@ -435,6 +435,12 @@ ft-log .t { white-space: pre-line; }
   .ed-fold > summary::after { content: "+"; width: 1em; text-align: end; }
   .ed-fold[open] > summary::after { content: "\2212"; }
   .ed-fold[open] > :not(summary) { padding-bottom: 1.25rem; }
+  /* inside "Recognition & appearances": plain sub-lists, no row, sign or count of their own */
+  .ed-group .ed-fold { border: 0; }
+  .ed-group .ed-fold > summary { min-height: 0; cursor: default; }
+  .ed-group .ed-fold > summary::after, .ed-group .ed-fold .ed-count { display: none; }
+  .ed-group .ed-fold > summary .label { margin-bottom: .75em; }
+  .ed-group .ed-fold[open] > :not(summary) { padding-bottom: 1.5rem; }
   .arc-desc { font-size: var(--text-body); }   /* 7–10 lines: read at body size, like About */
 
   .arc { margin-top: 5rem; }
