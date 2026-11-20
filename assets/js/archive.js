@@ -6,7 +6,7 @@
   var pad = function (x) { return (x < 10 ? '0' : '') + x; };
 
   /* ---------- sizes ---------- */
-  var SIZE_KEY = 'arc-size';
+  var SIZE_KEY = 'arc-size-v2';   // new key: everyone starts at the new default, Large
   function setSize(size) {
     arc.dataset.size = size;
     arc.querySelectorAll('.arc-btn').forEach(function (b) {
