@@ -42,7 +42,9 @@
   --glow-2: color-mix(in srgb, var(--live) 60%, transparent);
   --glow-3: color-mix(in srgb, var(--live) 25%, transparent);
   /* every hover change on the site: 200ms on the standard curve (the same as the profile toggles) */
-  --hover: .2s cubic-bezier(.4, 0, .2, 1);                          /* text on --live: 15.9:1 */
+  --hover: .2s cubic-bezier(.4, 0, .2, 1);
+  /* one-time motion (page entrance, images fading in, words and lines settling): a strong ease-out */
+  --ease-out: cubic-bezier(.23, 1, .32, 1);                          /* text on --live: 15.9:1 */
 }
 
 /* Light mode: its own palette on warm paper white, not an inversion of dark */
@@ -325,7 +327,7 @@ body.hm-anim .page-content *:not(.hm-active) { color: color-mix(in srgb, var(--h
   transition: opacity var(--hover);
 }
 .tool-hint::before { content: ""; border-style: solid; border-width: 4px 0 4px 7px; border-color: transparent transparent transparent currentColor; }
-@media (hover: hover) { .tool-hint { display: inline-flex; } }
+@media (hover: hover) and (pointer: fine) { .tool-hint { display: inline-flex; } }
 .tool:hover .tool-hint, .tool:focus-within .tool-hint { opacity: 0; }
 
 /* image: centered, S / M / L on the same 4-column grid */
@@ -417,7 +419,7 @@ ft-log .e {
   visibility: hidden;
 }
 ft-log.on .e.go { visibility: visible; }
-ft-log .e { opacity: 0; transition: opacity .3s ease-out, translate .3s ease-out; }
+ft-log .e { opacity: 0; transition: opacity .3s var(--ease-out), translate .3s var(--ease-out); }
 ft-log .e.go { opacity: 1; }
 @media (prefers-reduced-motion: no-preference) {
   ft-log .e { translate: 0 6px; }
@@ -426,7 +428,7 @@ ft-log .e.go { opacity: 1; }
 ft-log .t { white-space: pre-line; }
 
 /* ---------- hover: pointer devices only, so a tap never leaves an item looking selected ---------- */
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .top a:hover, .top .copy-email:hover { opacity: .6; }
   .theme-btn:hover i { opacity: 1; }
   .ed .alt-body a:hover, .ed .copy-email:hover { text-decoration-color: currentColor; }
@@ -445,14 +447,14 @@ ft-log .t { white-space: pre-line; }
   .arc.is-settling .arc-img { transition: none; }   /* no size animation on page load */
   .tool-img img { transition: scale var(--hover); }
 }
-@media (hover: hover) {
+@media (hover: hover) and (pointer: fine) {
   .tool > a:hover .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2), 0 0 36px 10px var(--glow-3); transition-duration: .6s;   /* fading in: slow */ }
 }
 .tool > a:focus-visible .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2), 0 0 36px 10px var(--glow-3); transition-duration: .6s;   /* fading in: slow */ }
 @media (prefers-reduced-motion: no-preference) {
   .tool > a:focus-visible .tool-badge.is-live { scale: 1.15; transition-duration: .4s; }
 }
-@media (prefers-reduced-motion: no-preference) and (hover: hover) {
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
   .tool > a:hover .tool-badge.is-live { scale: 1.15; transition-duration: .4s; }   /* grows in .4s, shrinks back in .3s with its glow */
   .tool > a:hover .tool-img img { scale: 1.03; }
 }
@@ -472,7 +474,7 @@ ft-log .t { white-space: pre-line; }
    keyframe until the head script marks the font ready, so it can't run on the fallback face. */
 @keyframes enter-rise { from { opacity: 0; translate: 0 12px; filter: blur(4px); } }
 @keyframes enter-fade { from { opacity: 0; } }
-html.entering .bio-section h1, html.entering .ed-set { animation: enter-fade .4s ease-out both paused; }
+html.entering .bio-section h1, html.entering .ed-set { animation: enter-fade .4s var(--ease-out) both paused; }
 html.entering .ed-set { animation-delay: .1s; }
 html.entered .bio-section h1, html.entered .ed-set { animation-play-state: running; }
 @media (prefers-reduced-motion: no-preference) {
@@ -481,13 +483,13 @@ html.entered .bio-section h1, html.entered .ed-set { animation-play-state: runni
 
 /* images fade in as they finish loading instead of popping in (media.js marks them); a fade, so it
    stays under reduced motion too. Without JS nothing is hidden. */
-html.fade-media .ss img, html.fade-media .tool-img img { opacity: 0; transition: opacity .3s ease-out; }
+html.fade-media .ss img, html.fade-media .tool-img img { opacity: 0; transition: opacity .3s var(--ease-out); }
 html.fade-media .ss img.is-loaded, html.fade-media .tool-img img.is-loaded { opacity: 1; }
 
 /* the email label's word swaps (Email / Copy / Copied) settle in from 4px below */
 @keyframes word-in { from { opacity: 0; translate: 0 4px; } }
 @keyframes word-fade { from { opacity: 0; } }
-.word-in { display: inline-block; animation: word-fade .15s ease-out; }
+.word-in { display: inline-block; animation: word-fade .15s var(--ease-out); }
 @media (prefers-reduced-motion: no-preference) { .word-in { animation-name: word-in; } }
 
 /* ---------- mobile ---------- */

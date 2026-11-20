@@ -5,7 +5,7 @@
    data-quad="shot.jpg" data-fx="stretch" data-cut="529" → pixel-stretch marquee (see STRETCH)
    Quad and center hovers also dim the rest of the copy. */
 (function () {
-  if (!matchMedia('(hover: hover)').matches) return; // touch: links just work as links
+  if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return; // touch: links just work as links
   var still = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- settings ---------- */
