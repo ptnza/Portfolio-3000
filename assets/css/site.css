@@ -103,7 +103,7 @@ h1 {
 /* ---------- header ---------- */
 .top {
   position: sticky; top: 0; z-index: 50;
-  display: grid;
+  display: grid; align-items: center;   /* name, nav and the theme dots share one centre line, whatever the font's metrics */
   grid-template-columns: repeat(4, minmax(0, 1fr));
   column-gap: 3rem;
   padding-top: var(--pad); padding-bottom: var(--pad);
@@ -429,9 +429,9 @@ ft-log .t { white-space: pre-line; }
   .ed-fold { border-top: 1px solid var(--line); }
   .ed-set > .ed:last-child .ed-fold:last-child { border-bottom: 1px solid var(--line); }
   .ed-fold > summary { display: flex; align-items: center; gap: .5em; min-height: 44px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .ed-fold > summary .label { margin: 0; }
+  .ed-fold > summary .label { margin: 0; margin-inline-end: auto; }   /* count and +/− always sit on the right edge, with or without a count */
   .ed-count, .ed-fold > summary::after { font-size: var(--text-body-sm); }
-  .ed-count { display: inline; margin-inline-start: auto; opacity: var(--faint); font-variant-numeric: tabular-nums; }
+  .ed-count { display: inline; opacity: var(--faint); }
   .ed-fold > summary::after { content: "+"; width: 1em; text-align: end; }
   .ed-fold[open] > summary::after { content: "\2212"; }
   .ed-fold[open] > :not(summary) { padding-bottom: 1.25rem; }
