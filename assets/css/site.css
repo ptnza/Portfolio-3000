@@ -90,7 +90,7 @@ a { color: inherit; text-decoration: none; }
 a:active { opacity: .7; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 :focus-visible { outline-offset: 2px; } /* the browser's own ring: 2px+, adapts to forced colors */
-[id] { scroll-margin-top: calc(4 * var(--rs)); }       /* anchors land clear of the sticky header */
+html { scroll-padding-top: calc(4 * var(--rs)); }   /* anchors and keyboard focus land clear of the sticky header */
 .skip-link { position: fixed; top: var(--pad); inset-inline-start: -999px; z-index: 10000; padding: .5em .8em; background: var(--fg); color: var(--bg); }
 .skip-link:focus { inset-inline-start: var(--pad); }
 ::selection { background: var(--fg); color: var(--bg); }
@@ -189,7 +189,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed-p + .ed-p { text-indent: 1.4em; }
 .ed-idx .row { display: grid; grid-template-columns: 3.6em 1fr; column-gap: .5em; }
 .ed-list .item { display: block; text-wrap: pretty; }          /* flush-left list, no year column (Press) */
-.ed-list .item + .item { margin-top: .35em; }
+.ed-list .item + .item { margin-top: .6em; }   /* link centres at least 24px apart (WCAG 2.5.8) */
 /* folding lists: a plain heading on wide screens, a tappable row on phones (profile.js) */
 .ed-fold > summary { display: block; list-style: none; cursor: default; }
 .ed-fold > summary::-webkit-details-marker { display: none; }
@@ -207,7 +207,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   --col: calc(50% - calc(.625 * var(--rs)));   /* M image */
   --side: 15%;                  /* title + credits tracks */
   --tracks: minmax(0, 1fr) var(--side) var(--col) var(--side) minmax(0, 1fr);
-  margin-top: calc(10 * var(--rs)); counter-reset: arc; scroll-margin-top: var(--head-h);
+  margin-top: calc(10 * var(--rs)); counter-reset: arc; scroll-margin-top: calc(var(--head-h) - 4 * var(--rs));   /* lands where it did: the page padding above does the rest */
 }
 
 /* S / M / L: three 44px circles stacked in the left gutter, on the same left edge as the name
@@ -241,7 +241,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   container-type: inline-size;   /* lets the slide bar size itself to the M column at any image size */
   counter-increment: arc;
   margin-bottom: calc(9 * var(--rs));
-  scroll-margin-top: calc(6 * var(--rs));
+  scroll-margin-top: calc(2 * var(--rs));   /* + the page's 4 = where it landed before */
 }
 
 /* project info: title left, description over the image, credits right */
@@ -296,7 +296,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   font-size: var(--text-caption); font-weight: 500; line-height: 1; letter-spacing: .04em; text-transform: uppercase;
   white-space: nowrap; text-box: trim-both cap alphabetic;   /* letters sit centred in the pill, not low */
 }
-.tool-badge.is-live { position: relative; z-index: 0; background: var(--live); color: var(--on-live); transition: scale .4s cubic-bezier(.4, 0, .2, 1); }
+.tool-badge.is-live { position: relative; z-index: 0; background: var(--live); color: var(--on-live); transition: scale .3s cubic-bezier(.4, 0, .2, 1); }
 /* a linked card's Live badge glows when the card is hovered or focused: the badge grows 15% and a soft
    lime glow spreads evenly around its edge (layered shadows, so a wide pill isn't stretched). The glow
    fades in slowly (.6s) and out quicker (.3s), on the same curve as every hover. */
@@ -439,10 +439,10 @@ ft-log .t { white-space: pre-line; }
 }
 .tool > a:focus-visible .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2), 0 0 36px 10px var(--glow-3); transition-duration: .6s;   /* fading in: slow */ }
 @media (prefers-reduced-motion: no-preference) {
-  .tool > a:focus-visible .tool-badge.is-live { scale: 1.15; }
+  .tool > a:focus-visible .tool-badge.is-live { scale: 1.15; transition-duration: .4s; }
 }
 @media (prefers-reduced-motion: no-preference) and (hover: hover) {
-  .tool > a:hover .tool-badge.is-live { scale: 1.15; }
+  .tool > a:hover .tool-badge.is-live { scale: 1.15; transition-duration: .4s; }   /* grows in .4s, shrinks back in .3s with its glow */
   .tool > a:hover .tool-img img { scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -452,6 +452,7 @@ ft-log .t { white-space: pre-line; }
 
 /* ---------- narrow desktop / tablet: the credits column gets too tight, so credits sit under the description ---------- */
 @media (min-width: 769px) and (max-width: 1100px) {
+  .ed-set { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: calc(5 * var(--rs)); }   /* four profile columns are too narrow here */
   .arc-meta { grid-column: 3; grid-row: 3; padding-left: 0; margin-top: 1.25em; }
 }
 
