@@ -4,7 +4,7 @@
  "items": [
   { "name": "Areaform", "desc": "Data visualization software", "status": "progress", "url": "",
     "video": "assets/media/tools/areaform.mp4", "image": "assets/media/tools/areaform-poster.jpg" },
-  { "name": "Moodboard 3000", "desc": "An image layout engine for Figma and Figma Slides, used by 4,600+ designers.", "status": "live", "url": "https://www.figma.com/community/plugin/1616902199522165388/moodboard-3000",
+  { "name": "Moodboard 3000", "desc": "An image layout engine for Figma and Figma Slides, used by 5,200+ designers. V4 is out now on Figma Community.", "status": "live", "url": "https://www.figma.com/community/plugin/1616902199522165388/moodboard-3000",
     "video": "assets/media/tools/moodboard-3000.mp4", "image": "assets/media/tools/moodboard-3000-poster.jpg" },
   { "name": "Patternly", "desc": "Custom tool for Calendly", "status": "", "url": "",
     "video": "assets/media/tools/patternly.mp4", "image": "assets/media/tools/patternly-poster.jpg" },

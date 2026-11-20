@@ -147,9 +147,14 @@
       });
       count.textContent = (first === last ? pad(first) : pad(first) + '–' + pad(last)) + ' / ' + pad(cards.length);   // one card on screen: "01 / 08"
     }
-    function page(dir) { // one screenful of cards: the visible stretch right of the inset
-      var step = row.clientWidth - (parseFloat(getComputedStyle(row).scrollPaddingLeft) || 0);
-      row.scrollBy({ left: dir * step, behavior: still ? 'auto' : 'smooth' });
+    function page(dir) { // one screenful of cards, landing exactly on a card's edge
+      // (a fixed scroll distance drifts by the gap's fraction each tap where the browser doesn't re-snap, as on iOS)
+      var pad = parseFloat(getComputedStyle(row).scrollPaddingLeft) || 0, origin = row.getBoundingClientRect().left - row.scrollLeft;
+      var lefts = cards.map(function (c) { return c.getBoundingClientRect().left - origin; });
+      var at = 0; lefts.forEach(function (l, k) { if (l - pad <= row.scrollLeft + 2) at = k; });
+      var shown = 0; lefts.forEach(function (l, k) { if (k >= at && l - pad + cards[k].offsetWidth <= row.scrollLeft + row.clientWidth - pad + 2) shown++; });
+      var to = Math.max(0, Math.min(cards.length - 1, at + dir * Math.max(1, shown)));
+      row.scrollTo({ left: lefts[to] - pad, behavior: still ? 'auto' : 'smooth' });
     }
     bar.querySelector('.tools-prev').addEventListener('click', function () { page(-1); });
     bar.querySelector('.tools-next').addEventListener('click', function () { page(1); });
