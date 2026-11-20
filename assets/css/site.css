@@ -38,8 +38,9 @@
   --accent: oklch(0.56 0.29 269);              /* brand blue, changelog overlay only */
   --live: #c8f55a;                             /* status: live. Signal lime, used for nothing else */
   --on-live: #0d1400;
-  --glow-1: color-mix(in srgb, var(--live) 45%, transparent);   /* Live badge glow: inner, outer */
-  --glow-2: color-mix(in srgb, var(--live) 20%, transparent);
+  --glow-1: var(--live);                                         /* Live badge glow: inner, middle, outer */
+  --glow-2: color-mix(in srgb, var(--live) 60%, transparent);
+  --glow-3: color-mix(in srgb, var(--live) 25%, transparent);
   /* every hover change on the site: 200ms on the standard curve (the same as the profile toggles) */
   --hover: .2s cubic-bezier(.4, 0, .2, 1);                          /* text on --live: 15.9:1 */
 }
@@ -53,8 +54,9 @@
   --underline-soft: rgba(0, 0, 0, .45);
   --well: rgba(0, 0, 0, .05);
   --img-outline: oklch(0 0 0 / .1);           /* pure black in light */
-  --glow-1: color-mix(in srgb, var(--live) 80%, transparent);   /* lime on paper needs more to read */
-  --glow-2: color-mix(in srgb, var(--live) 45%, transparent);
+  --glow-1: var(--live);                                         /* lime on paper needs more to read */
+  --glow-2: color-mix(in srgb, var(--live) 85%, transparent);
+  --glow-3: color-mix(in srgb, var(--live) 45%, transparent);
   --soft: .65;    /* 5.0:1 on paper */
   --faint: .65;   /* 5.0:1 */
 }
@@ -272,11 +274,12 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   grid-auto-columns: var(--w);
   overflow-x: auto; overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory; scrollbar-width: none;
+  padding-block-end: 48px; margin-block-end: -48px;   /* room below the cards so the Live glow isn't clipped by the scroll area; nothing moves */
 }
 .tools::-webkit-scrollbar { display: none; }
 .arc[data-size="s"] .tools { --w: 21.3vw; }
 .arc[data-size="l"] .tools { --w: 48.3vw; }
-.tools-bar { margin-top: .9em; }
+.tools-bar { position: relative; z-index: 1; margin-top: .9em; }   /* above the row's glow room, so the arrows stay clickable */
 .tool { scroll-snap-align: start; }
 .tool > a, .tool > div { display: flex; flex-direction: column; }
 .tool-img { position: relative; margin: 0 0 .6em; aspect-ratio: 16 / 10; overflow: hidden; border-radius: 8px; background: var(--well); }
@@ -300,7 +303,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .tool-badge.is-live::before {
   content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
   opacity: 0;
-  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
   transition: opacity .3s cubic-bezier(.4, 0, .2, 1), box-shadow .3s cubic-bezier(.4, 0, .2, 1);   /* fading out */
 }
 .tool-badge-arrow { margin-inline-start: .35em; }   /* a clear gap: the font's word space all but vanishes at badge size */
@@ -432,9 +435,9 @@ ft-log .t { white-space: pre-line; }
   .tool-img img { transition: scale var(--hover); }
 }
 @media (hover: hover) {
-  .tool > a:hover .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2); transition-duration: .6s;   /* fading in: slow */ }
+  .tool > a:hover .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2), 0 0 36px 10px var(--glow-3); transition-duration: .6s;   /* fading in: slow */ }
 }
-.tool > a:focus-visible .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2); transition-duration: .6s;   /* fading in: slow */ }
+.tool > a:focus-visible .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2), 0 0 36px 10px var(--glow-3); transition-duration: .6s;   /* fading in: slow */ }
 @media (prefers-reduced-motion: no-preference) {
   .tool > a:focus-visible .tool-badge.is-live { scale: 1.15; }
 }
