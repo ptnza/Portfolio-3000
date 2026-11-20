@@ -36,7 +36,9 @@
   --leading-body: 1.5;                    /* anything that runs 3+ lines */
   --accent: oklch(0.56 0.29 269);              /* brand blue, changelog overlay only */
   --live: #c8f55a;                             /* status: live. Signal lime, used for nothing else */
-  --on-live: #0d1400;                          /* text on --live: 15.9:1 */
+  --on-live: #0d1400;
+  /* every hover change on the site: 200ms on the standard curve (the same as the profile toggles) */
+  --hover: .2s cubic-bezier(.4, 0, .2, 1);                          /* text on --live: 15.9:1 */
 }
 
 /* Light mode: its own palette on warm paper white, not an inversion of dark */
@@ -119,9 +121,9 @@ h1 {
    The live mode is full strength and underlined, so it isn't carried by brightness alone. */
 .theme-btn { display: flex; align-items: center; justify-content: center; gap: 5px; height: 40px; min-width: 40px; margin-block: -12px; padding-inline: 4px; transition: scale .2s ease-out; }
 .theme-btn:active { scale: .96; }
-.theme-btn i { position: relative; display: block; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid currentColor; opacity: var(--faint); transition: opacity .15s ease-out; }
+.theme-btn i { position: relative; display: block; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid currentColor; opacity: var(--faint); transition: opacity var(--hover); }
 .theme-btn .d { background: currentColor; }
-.theme-btn i::after { content: ""; position: absolute; left: -1.5px; right: -1.5px; bottom: -5px; height: 1.5px; background: currentColor; opacity: 0; transition: opacity .15s ease-out; }
+.theme-btn i::after { content: ""; position: absolute; left: -1.5px; right: -1.5px; bottom: -5px; height: 1.5px; background: currentColor; opacity: 0; transition: opacity var(--hover); }
 .theme-btn[aria-pressed="false"] .l, .theme-btn[aria-pressed="true"] .d { opacity: 1; }
 .theme-btn[aria-pressed="false"] .l::after, .theme-btn[aria-pressed="true"] .d::after { opacity: 1; }
 
@@ -179,7 +181,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed .y { font-style: italic; opacity: var(--soft); white-space: nowrap; }
 .ed .d { opacity: var(--soft); }
 .ed a.clip-trigger { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-position: from-font; text-underline-offset: .07em; text-decoration-skip-ink: auto; }   /* same line as the other links, so descenders cut gaps in it */
-.ed .alt-body a, .ed .copy-email { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-underline-offset: .07em; text-decoration-skip-ink: auto; transition: text-decoration-color .15s ease-out; }
+.ed .alt-body a, .ed .copy-email { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-underline-offset: .07em; text-decoration-skip-ink: auto; transition: text-decoration-color var(--hover); }
 
 /* ---------- work ----------
    One 5-track grid: gutter | title | description | credits | gutter.
@@ -212,10 +214,9 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   background: none;
   color: var(--fg);
   border: 1px solid var(--line);
-  transition-property: background-color, border-color, color, scale;
-  transition-duration: .15s, .15s, .15s, .2s; transition-timing-function: ease-out;
+  transition: background-color var(--hover), border-color var(--hover), color var(--hover), scale .2s ease-out;
 }
-.arc-btn > span { text-box: trim-both cap alphabetic; opacity: var(--soft); transition: opacity .15s ease-out; }
+.arc-btn > span { text-box: trim-both cap alphabetic; opacity: var(--soft); transition: opacity var(--hover); }
 .arc-btn:active { scale: .96; }
 .arc-btn.is-on { background: var(--fg); border-color: var(--fg); color: var(--bg); }
 .arc-btn.is-on > span { opacity: 1; }
@@ -289,7 +290,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   background: rgba(0, 0, 0, .55); color: #fff;
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
   font-size: var(--text-caption); line-height: 1; white-space: nowrap; pointer-events: none;
-  transition: opacity .15s ease-out;
+  transition: opacity var(--hover);
 }
 .tool-hint::before { content: ""; border-style: solid; border-width: 4px 0 4px 7px; border-color: transparent transparent transparent currentColor; }
 @media (hover: hover) { .tool-hint { display: inline-flex; } }
@@ -342,7 +343,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ss-nav button {
   opacity: var(--faint);
   display: grid; place-items: center; min-width: 40px; height: 40px; padding-inline: 6px;   /* 40px targets, side by side, no overlap */
-  transition-property: opacity, scale; transition-duration: .15s, .2s; transition-timing-function: ease-out;
+  transition: opacity var(--hover), scale .2s ease-out;
 }
 .ss-nav button:active { scale: .96; }
 .ss-play[hidden] { display: none; }
@@ -352,7 +353,7 @@ footer { font-weight: 350; }
 .ft-base { font-weight: 400; }   /* 350 is for display sizes only */
 .ft { border-top: 1px solid var(--line); padding-top: 8rem; margin-bottom: 9rem; }
 .ft-big { display: block; text-align: center; text-wrap: balance; }
-.ft-big a, .ft-btn { transition: opacity .15s ease-out; }
+.ft-big a, .ft-btn, .top a, .top .copy-email, .arc-title a { transition: opacity var(--hover); }
 .ft-base {
   display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;
   font-size: var(--text-caption); line-height: 1.4;
@@ -404,7 +405,7 @@ ft-log .t { white-space: pre-line; }
 @media (prefers-reduced-motion: no-preference) {
   .arc-img { transition: width .5s cubic-bezier(.2, .7, .2, 1); }
   .arc.is-settling .arc-img { transition: none; }   /* no size animation on page load */
-  .tool-img img { transition: scale .25s ease-out; }
+  .tool-img img { transition: scale var(--hover); }
 }
 @media (prefers-reduced-motion: no-preference) and (hover: hover) {
   .tool > a:hover .tool-img img { scale: 1.03; }
@@ -437,7 +438,7 @@ ft-log .t { white-space: pre-line; }
     content: ""; flex: none; width: 18px; height: 18px;
     background: currentColor; opacity: var(--faint);
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18.5V13H5.5C4.94772 13 4.5 12.5523 4.5 12C4.5 11.4477 4.94772 11 5.5 11H11V5.5C11 4.94772 11.4477 4.5 12 4.5C12.5523 4.5 13 4.94772 13 5.5V11H18.5C19.0523 11 19.5 11.4477 19.5 12C19.5 12.5523 19.0523 13 18.5 13H13V18.5C13 19.0523 12.5523 19.5 12 19.5C11.4477 19.5 11 19.0523 11 18.5Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18.5V13H5.5C4.94772 13 4.5 12.5523 4.5 12C4.5 11.4477 4.94772 11 5.5 11H11V5.5C11 4.94772 11.4477 4.5 12 4.5C12.5523 4.5 13 4.94772 13 5.5V11H18.5C19.0523 11 19.5 11.4477 19.5 12C19.5 12.5523 19.0523 13 18.5 13H13V18.5C13 19.0523 12.5523 19.5 12 19.5C11.4477 19.5 11 19.0523 11 18.5Z'/%3E%3C/svg%3E") center / contain no-repeat;
-    transition-property: rotate, opacity; transition-duration: .2s; transition-timing-function: cubic-bezier(.4, 0, .2, 1);
+    transition: rotate var(--hover), opacity var(--hover);
     will-change: transform;
   }
   .ed-fold[open]:not(.is-closing) > summary::after { rotate: 45deg; opacity: 1; }
