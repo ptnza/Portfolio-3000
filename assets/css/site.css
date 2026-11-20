@@ -26,7 +26,8 @@
   /* type scale: every size on the site comes from here, named by use */
   --text-display: 3.5rem;                 /* bio statement */
   --text-body: max(16px, 1.2rem);         /* About paragraphs: never under the web's 16px default */
-  --text-body-sm: max(13px, .85rem);      /* everything else you read: descriptions, lists, nav, labels */
+  --text-body-md: max(15px, 1rem);        /* project descriptions: 8–10 line paragraphs on desktop */
+  --text-body-sm: max(13px, .85rem);      /* everything else you read: lists, nav, labels */
   --text-caption: 12px;                   /* controls, badges, pills, footer base line */
   --text-micro: 11px;                     /* slide counter only */
   --text-footer: 9.7rem;                  /* the big footer links */
@@ -158,7 +159,7 @@ h1 a.clip-trigger {
 .clip-float figcaption { margin-top: 8px; font-size: var(--text-caption); opacity: .6; }
 
 /* hover dimming (toggled by hover-media.js) */
-body.hm-anim .page-content * { transition: color .5s ease-out !important; }
+body.hm-anim .page-content * { transition: color var(--hover) !important; }
 body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 
 /* ---------- editorial columns ---------- */
@@ -236,7 +237,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .arc-head::before { content: ""; grid-column: 2 / 5; grid-row: 1; border-top: 1px solid var(--line); margin-bottom: .9em; }
 .arc-title { grid-column: 2; grid-row: 2; padding-right: var(--gap); display: grid; grid-template-columns: 2.4em 1fr; text-wrap: balance; }
 .arc-title::before { content: counter(arc, decimal-leading-zero); opacity: var(--faint); }
-.arc-desc { grid-column: 3; grid-row: 2; max-width: 30em; line-height: var(--leading-body); text-wrap: pretty; overflow-wrap: break-word; } /* caps the line length near the top of 60–75 characters */
+.arc-desc { grid-column: 3; grid-row: 2; max-width: 30em; font-size: var(--text-body-md); line-height: var(--leading-body); text-wrap: pretty; overflow-wrap: break-word; } /* caps the line length near the top of 60–75 characters */
 .arc-meta { grid-column: 4; grid-row: 2; padding-left: calc(var(--gap) * 1.5); display: grid; grid-template-columns: 3em 1fr; row-gap: .1em; align-content: start; }
 .arc-meta .k { opacity: var(--faint); }
 
@@ -314,9 +315,9 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   position: absolute; inset: 0; margin: 0;
   display: flex; align-items: flex-end; justify-content: center; /* bottom-anchored: the counter always sits right under the image */
   opacity: 0; visibility: hidden;
-  transition: opacity .6s ease-out, visibility 0s linear .6s;
+  transition: opacity .3s ease-out, visibility 0s linear .3s;
 }
-.ss-slide.is-on { opacity: 1; visibility: visible; transition: opacity .6s ease-out; }
+.ss-slide.is-on { opacity: 1; visibility: visible; transition: opacity .3s ease-out; }
 .ss-slide { container-type: size; }
 /* the element is the picture, so radius + outline sit on its edges; it scales up or down to fit the
    frame by its own shape (--r), never stopping at its pixel size and leaving a gap at L */
@@ -373,7 +374,7 @@ ft-log {
   overflow: hidden;
   mix-blend-mode: difference;
   pointer-events: none; opacity: 0; visibility: hidden;
-  transition: opacity .18s ease-out, visibility 0s linear .18s;
+  transition: opacity .12s ease-out, visibility 0s linear .12s;   /* exit: shorter than the .18s enter */
   font-family: var(--font);
 }
 ft-log.on { opacity: 1; visibility: visible; transition: opacity .18s ease-out; }
@@ -411,8 +412,13 @@ ft-log .t { white-space: pre-line; }
   .tool > a:hover .tool-img img { scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .ss-slide, .ss-slide.is-on, ft-log, ft-log.on, .ed-fold > summary::after { transition: none; }
+  .ed-fold > summary::after { transition: opacity var(--hover); }   /* fades are fine; no rotation */
   .arc-btn:active, .ss-nav button:active, .theme-btn:active { scale: 1; }
+}
+
+/* ---------- narrow desktop / tablet: the credits column gets too tight, so credits sit under the description ---------- */
+@media (min-width: 769px) and (max-width: 1100px) {
+  .arc-meta { grid-column: 3; grid-row: 3; padding-left: 0; margin-top: 1.25em; }
 }
 
 /* ---------- mobile ---------- */
@@ -439,7 +445,7 @@ ft-log .t { white-space: pre-line; }
     background: currentColor; opacity: var(--faint);
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18.5V13H5.5C4.94772 13 4.5 12.5523 4.5 12C4.5 11.4477 4.94772 11 5.5 11H11V5.5C11 4.94772 11.4477 4.5 12 4.5C12.5523 4.5 13 4.94772 13 5.5V11H18.5C19.0523 11 19.5 11.4477 19.5 12C19.5 12.5523 19.0523 13 18.5 13H13V18.5C13 19.0523 12.5523 19.5 12 19.5C11.4477 19.5 11 19.0523 11 18.5Z'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M11 18.5V13H5.5C4.94772 13 4.5 12.5523 4.5 12C4.5 11.4477 4.94772 11 5.5 11H11V5.5C11 4.94772 11.4477 4.5 12 4.5C12.5523 4.5 13 4.94772 13 5.5V11H18.5C19.0523 11 19.5 11.4477 19.5 12C19.5 12.5523 19.0523 13 18.5 13H13V18.5C13 19.0523 12.5523 19.5 12 19.5C11.4477 19.5 11 19.0523 11 18.5Z'/%3E%3C/svg%3E") center / contain no-repeat;
     transition: rotate var(--hover), opacity var(--hover);
-    will-change: transform;
+    will-change: rotate;
   }
   .ed-fold[open]:not(.is-closing) > summary::after { rotate: 45deg; opacity: 1; }
   .ed-fold[open] > :not(summary) { padding-bottom: 1.25rem; }

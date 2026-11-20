@@ -38,7 +38,7 @@
   };
   var TEXT_DIM = {
     amount: 0.3,      // copy opacity while an image is up
-    time: 0.5         // fade, seconds (keep in step with site.css)
+    time: 0.2         // fade, seconds (keep in step with --hover in site.css)
   };
 
   var isVideo = function (u) { return /\.(mp4|webm|m4v)$/i.test(u); };
