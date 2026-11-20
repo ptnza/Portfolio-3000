@@ -38,6 +38,8 @@
   --accent: oklch(0.56 0.29 269);              /* brand blue, changelog overlay only */
   --live: #c8f55a;                             /* status: live. Signal lime, used for nothing else */
   --on-live: #0d1400;
+  --glow-1: color-mix(in srgb, var(--live) 45%, transparent);   /* Live badge glow: inner, outer */
+  --glow-2: color-mix(in srgb, var(--live) 20%, transparent);
   /* every hover change on the site: 200ms on the standard curve (the same as the profile toggles) */
   --hover: .2s cubic-bezier(.4, 0, .2, 1);                          /* text on --live: 15.9:1 */
 }
@@ -51,6 +53,8 @@
   --underline-soft: rgba(0, 0, 0, .45);
   --well: rgba(0, 0, 0, .05);
   --img-outline: oklch(0 0 0 / .1);           /* pure black in light */
+  --glow-1: color-mix(in srgb, var(--live) 80%, transparent);   /* lime on paper needs more to read */
+  --glow-2: color-mix(in srgb, var(--live) 45%, transparent);
   --soft: .65;    /* 5.0:1 on paper */
   --faint: .65;   /* 5.0:1 */
 }
@@ -290,13 +294,14 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   white-space: nowrap; text-box: trim-both cap alphabetic;   /* letters sit centred in the pill, not low */
 }
 .tool-badge.is-live { position: relative; z-index: 0; background: var(--live); color: var(--on-live); transition: scale .4s cubic-bezier(.4, 0, .2, 1); }
-/* a linked card's Live badge glows when the card is hovered or focused: the badge grows 15% and a lime
-   halo grows out to 1.3× its size, then both shrink back in on leave. Same curve as every hover, at
-   twice the duration (.4s) so the glow reads as a slow swell. */
+/* a linked card's Live badge glows when the card is hovered or focused: the badge grows 15% and a soft
+   lime glow spreads evenly around its edge (layered shadows, so a wide pill isn't stretched). The glow
+   fades in slowly (.6s) and out quicker (.3s), on the same curve as every hover. */
 .tool-badge.is-live::before {
   content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
-  background: var(--live); filter: blur(4px); opacity: 0;
-  transition: opacity .4s cubic-bezier(.4, 0, .2, 1), scale .4s cubic-bezier(.4, 0, .2, 1);
+  opacity: 0;
+  box-shadow: 0 0 0 0 transparent, 0 0 0 0 transparent;
+  transition: opacity .3s cubic-bezier(.4, 0, .2, 1), box-shadow .3s cubic-bezier(.4, 0, .2, 1);   /* fading out */
 }
 .tool-badge-arrow { margin-inline-start: .35em; }   /* a clear gap: the font's word space all but vanishes at badge size */
 .tool-badge.is-progress { box-shadow: inset 0 0 0 1px var(--underline); color: var(--fg); }
@@ -427,16 +432,14 @@ ft-log .t { white-space: pre-line; }
   .tool-img img { transition: scale var(--hover); }
 }
 @media (hover: hover) {
-  .tool > a:hover .tool-badge.is-live::before { opacity: 1; }
+  .tool > a:hover .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2); transition-duration: .6s;   /* fading in: slow */ }
 }
-.tool > a:focus-visible .tool-badge.is-live::before { opacity: 1; }
+.tool > a:focus-visible .tool-badge.is-live::before { opacity: 1; box-shadow: 0 0 6px 1px var(--glow-1), 0 0 18px 5px var(--glow-2); transition-duration: .6s;   /* fading in: slow */ }
 @media (prefers-reduced-motion: no-preference) {
   .tool > a:focus-visible .tool-badge.is-live { scale: 1.15; }
-  .tool > a:focus-visible .tool-badge.is-live::before { scale: 1.3; }   /* reduced motion: the glow fades in place */
 }
 @media (prefers-reduced-motion: no-preference) and (hover: hover) {
   .tool > a:hover .tool-badge.is-live { scale: 1.15; }
-  .tool > a:hover .tool-badge.is-live::before { scale: 1.3; }
   .tool > a:hover .tool-img img { scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) {
