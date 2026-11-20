@@ -289,7 +289,14 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
   font-size: var(--text-caption); font-weight: 500; line-height: 1; letter-spacing: .04em; text-transform: uppercase;
   white-space: nowrap; text-box: trim-both cap alphabetic;   /* letters sit centred in the pill, not low */
 }
-.tool-badge.is-live { background: var(--live); color: var(--on-live); }
+.tool-badge.is-live { position: relative; z-index: 0; background: var(--live); color: var(--on-live); }
+/* a linked card's Live badge glows when the card is hovered or focused: a soft lime halo that grows
+   out to twice the badge's size and shrinks back in on leave, on the shared hover timing */
+.tool-badge.is-live::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: var(--live); filter: blur(8px); opacity: 0;
+  transition: opacity var(--hover), scale var(--hover);
+}
 .tool-badge.is-progress { box-shadow: inset 0 0 0 1px var(--underline); color: var(--fg); }
 .tools-bar[hidden] { display: none; }
 /* video cards: a small "Hover to play" pill (pointer devices only) that fades once the video runs */
@@ -417,7 +424,15 @@ ft-log .t { white-space: pre-line; }
   .arc.is-settling .arc-img { transition: none; }   /* no size animation on page load */
   .tool-img img { transition: scale var(--hover); }
 }
+@media (hover: hover) {
+  .tool > a:hover .tool-badge.is-live::before { opacity: .7; }
+}
+.tool > a:focus-visible .tool-badge.is-live::before { opacity: .7; }
+@media (prefers-reduced-motion: no-preference) {
+  .tool > a:focus-visible .tool-badge.is-live::before { scale: 2; }   /* reduced motion: the glow fades in place */
+}
 @media (prefers-reduced-motion: no-preference) and (hover: hover) {
+  .tool > a:hover .tool-badge.is-live::before { scale: 2; }
   .tool > a:hover .tool-img img { scale: 1.03; }
 }
 @media (prefers-reduced-motion: reduce) {
