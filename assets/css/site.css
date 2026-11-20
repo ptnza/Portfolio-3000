@@ -163,6 +163,10 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed-idx .row { display: grid; grid-template-columns: 3.6em 1fr; column-gap: .5em; }
 .ed-list .item { display: block; text-wrap: pretty; }          /* flush-left list, no year column (Press) */
 .ed-list .item + .item { margin-top: .35em; }
+/* folding lists: a plain heading on wide screens, a tappable row on phones (profile.js) */
+.ed-fold > summary { display: block; list-style: none; cursor: default; }
+.ed-fold > summary::-webkit-details-marker { display: none; }
+.ed-count { display: none; }
 .ed-list .item > a:only-child { overflow-wrap: anywhere; }
 .ed .y { font-style: italic; opacity: var(--soft); white-space: nowrap; }
 .ed .d { opacity: var(--soft); }
@@ -290,7 +294,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 
 /* ---------- slideshow ---------- */
 .copy-email { text-align: start; }
-.ss, .ss-nav button, .arc-btn, .theme-btn, .tools-bar button { user-select: none; -webkit-user-select: none; }  /* rapid clicks and swipes shouldn't select words */
+.ss, .ss-nav button, .arc-btn, .theme-btn, .tools-bar button { user-select: none; -webkit-user-select: none; -webkit-tap-highlight-color: transparent; }  /* they draw their own pressed state */  /* rapid clicks and swipes shouldn't select words */
 .ss {
   position: relative;
   aspect-ratio: var(--ar, 1.5);
@@ -326,7 +330,7 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .arc-img .ss-bar { width: calc(50cqw - .625rem); margin-inline-start: calc(50% - (50cqw - .625rem) / 2); }
 .arc[data-size="s"] .arc-img .ss-bar { width: auto; margin-inline-start: 0; }
 .ss-count { opacity: var(--faint); font-size: var(--text-micro); letter-spacing: .02em; } /* the one deliberate exception to the 12px floor: a caption to the image */
-.ss-nav { display: flex; margin-block: -12px; margin-inline-end: -14px; } /* glyphs stay flush with the image edge */
+.ss-nav { display: flex; margin-block: -12px; margin-inline-end: -13px; } /* glyphs stay flush with the image edge */
 .ss-nav button {
   opacity: var(--faint);
   display: grid; place-items: center; min-width: 40px; height: 40px; padding-inline: 6px;   /* 40px targets, side by side, no overlap */
@@ -404,14 +408,25 @@ ft-log .t { white-space: pre-line; }
 /* ---------- mobile ---------- */
 @media (max-width: 768px) {
   html { font-size: .8125rem; }
-  .top { grid-template-columns: 1fr auto auto; column-gap: 1.25rem; }
+  .top { grid-template-columns: 1fr auto auto; column-gap: 1.25rem; background: var(--bg); mix-blend-mode: normal; color: var(--fg); }  /* solid bar: the blend can't keep it legible over dense text */
   .top-mail { grid-column: 3; }
-  .top-nav { gap: 1.5em; justify-self: end; }
+  .top-nav { gap: 24px; justify-self: end; }
   .top-mail > .copy-email { display: none; }
   :root { --text-display: 22px; --text-body-sm: 1rem; --text-footer: 3.6rem; --text-overlay: 4.5rem; }
   .bio-section { display: block; margin-top: 4rem; margin-bottom: 6rem; }
   .ed-set { grid-template-columns: 1fr; margin-top: 4rem; }
-  .ed { margin-bottom: 2.5rem; }
+  .ed { gap: 0; }
+  .ed-sec:not(.ed-fold) { margin-bottom: 3rem; }   /* About stays open */
+  .ed-fold { border-top: 1px solid var(--line); }
+  .ed-set > .ed:last-child .ed-fold:last-child { border-bottom: 1px solid var(--line); }
+  .ed-fold > summary { display: flex; align-items: center; gap: .5em; min-height: 44px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .ed-fold > summary .label { margin: 0; }
+  .ed-count, .ed-fold > summary::after { font-size: var(--text-body-sm); }
+  .ed-count { display: inline; margin-inline-start: auto; opacity: var(--faint); font-variant-numeric: tabular-nums; }
+  .ed-fold > summary::after { content: "+"; width: 1em; text-align: end; }
+  .ed-fold[open] > summary::after { content: "\2212"; }
+  .ed-fold[open] > :not(summary) { padding-bottom: 1.25rem; }
+  .arc-desc { font-size: var(--text-body); }   /* 7–10 lines: read at body size, like About */
 
   .arc { margin-top: 5rem; }
   .arc-bar { display: none; }
