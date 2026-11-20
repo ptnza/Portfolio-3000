@@ -97,7 +97,8 @@ def tools(t):
         badge = ''
         if it.get('status') in BADGES:
             cls, label = BADGES[it['status']]
-            badge = f'<span class="tool-badge {cls}">{label}</span>'
+            arrow = '<span aria-hidden="true">↗</span>' if it['url'] else ''  # a linked card's badge says it goes somewhere
+            badge = f'<span class="tool-badge {cls}">{arrow}{label}</span>'
         inner = (f'<figure class="tool-img">{media}</figure>'
                  f'<span class="tool-title"><span class="tool-name" title="{name}">{name}</span>{badge}</span>'
                  f'<span class="tool-desc">{desc}</span>')
