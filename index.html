@@ -43,9 +43,10 @@
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,300..600;1,300..600&display=swap">
-<!-- Google's latin subset leaves out the arrows (← → ↗ ↙ ↰ ↖); this pulls just those glyphs, 1.7KB -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..600&amp;text=%E2%86%90%E2%86%92%E2%86%97%E2%86%99%E2%86%A6%E2%86%B0%E2%86%96%E2%86%91%E2%86%93%E2%86%98">
+<link rel="preload" href="assets/fonts/PPNeueMontreal-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/PPNeueMontreal-Book.woff2" as="font" type="font/woff2" crossorigin>
+<!-- Neue Montreal has no ↦ or ↰; this pulls just those two glyphs from Inter Tight -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300..600&amp;text=%E2%86%A6%E2%86%B0">
 <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>

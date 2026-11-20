@@ -1,8 +1,16 @@
+/* ---------- fonts ----------
+   PP Neue Montreal, self-hosted (licensed web files). Book carries the in-between 350 the
+   bio line and footer use. The family has no ↦ or ↰, so Inter Tight supplies just those two
+   (a &text= subset in index.html). No italic cut is loaded: <i> titles are browser-slanted. */
+@font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Book.woff2") format("woff2"); font-weight: 350; font-display: swap; }
+@font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+
 /* ---------- tokens ----------
    Theme: one switch, [data-theme] on <html>. The head script opens every visit dark; the toggle
    (theme.js) switches for that visit. */
 :root {
-  --font: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: "PP Neue Montreal", "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --bg: #000;
   --fg: rgba(255, 255, 255, .93);
   --line: rgba(255, 255, 255, .22);
@@ -108,7 +116,7 @@ h1 {
 
 /* theme toggle, beside the email: one button, open dot = light, filled dot = dark.
    The live mode is full strength and underlined, so it isn't carried by brightness alone. */
-.theme-btn { display: flex; align-items: center; justify-content: center; gap: 5px; height: 40px; min-width: 40px; margin-block: -8px; padding-inline: 4px; transition: scale .2s ease-out; }
+.theme-btn { display: flex; align-items: center; justify-content: center; gap: 5px; height: 40px; min-width: 40px; margin-block: -12px; padding-inline: 4px; transition: scale .2s ease-out; }
 .theme-btn:active { scale: .96; }
 .theme-btn i { position: relative; display: block; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid currentColor; opacity: var(--faint); transition: opacity .15s ease-out; }
 .theme-btn .d { background: currentColor; }
@@ -132,7 +140,7 @@ h1 a.clip-trigger {
   text-underline-position: from-font;
   text-decoration-thickness: from-font;
   text-decoration-skip-ink: auto;
-  text-underline-offset: -.02em;   /* tucked just under the baseline; skip-ink clears the descenders */
+  text-underline-offset: .06em;    /* tucked just under the baseline; skip-ink clears the descenders */
 }
 
 /* floating clipping (position and motion come from the script) */
@@ -170,8 +178,8 @@ body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
 .ed-list .item > a:only-child { overflow-wrap: anywhere; }
 .ed .y { font-style: italic; opacity: var(--soft); white-space: nowrap; }
 .ed .d { opacity: var(--soft); }
-.ed a.clip-trigger { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-position: from-font; text-underline-offset: -.1em; text-decoration-skip-ink: auto; }   /* same line as the other links, so descenders cut gaps in it */
-.ed .alt-body a, .ed .copy-email { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-decoration-skip-ink: auto; transition: text-decoration-color .15s ease-out; }
+.ed a.clip-trigger { text-decoration: underline dotted; text-decoration-thickness: 1px; text-underline-position: from-font; text-underline-offset: .07em; text-decoration-skip-ink: auto; }   /* same line as the other links, so descenders cut gaps in it */
+.ed .alt-body a, .ed .copy-email { text-decoration: underline; text-decoration-color: var(--underline-soft); text-underline-position: from-font; text-underline-offset: .07em; text-decoration-skip-ink: auto; transition: text-decoration-color .15s ease-out; }
 
 /* ---------- work ----------
    One 5-track grid: gutter | title | description | credits | gutter.
