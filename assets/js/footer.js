@@ -84,7 +84,10 @@
     var addr = em.dataset.email, arrow = em.classList.contains('ft-email'), rest = em.textContent, timer, copied = false, over = false;
     function paint() {
       var word = copied ? 'Copied' : arrow && over ? 'Copy' : arrow ? 'Email' : rest;
-      if (arrow) em.innerHTML = '<span aria-hidden="true">↖</span>' + word; else em.textContent = word;
+      if (word === em._word) return;
+      var first = em._word === undefined; em._word = word;
+      var w = '<span' + (first ? '' : ' class="word-in"') + '>' + word + '</span>';   // a new word settles in from below
+      em.innerHTML = (arrow ? '<span aria-hidden="true">↖</span>' : '') + w;
     }
     function copy() {
       if (!(navigator.clipboard && window.isSecureContext)) { location.href = 'mailto:' + addr; return; }

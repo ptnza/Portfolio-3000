@@ -26,7 +26,7 @@ Cloudflare Workers (static assets) from `main` at [gavinpotenza.xyz](https://gav
 - `assets/hover/` — bio hover images (quote clipping, studio logos, Superhuman/Calendly), plus
   footer hover screenshots: `profile-{linkedin,github,twitter,instagram,datalands}.jpg`.
   A missing file just means no hover image for that link.
-- `assets/js/` — `hover-media.js` (bio hovers), `archive.js` (S/M/L, slideshows), `footer.js` (changelog / PO Box overlays, footer email: Copy / Copied), `theme.js` (light / dark toggle), `profile.js` (profile lists fold into tappable rows on phones; Recognition, Talks, Shows and Published in share one "Recognition & appearances" row there).
+- `assets/js/` — `hover-media.js` (bio hovers), `archive.js` (S/M/L, slideshows), `footer.js` (changelog / PO Box overlays, footer email: Copy / Copied), `theme.js` (light / dark toggle), `media.js` (images fade in as they load), `profile.js` (profile lists fold into tappable rows on phones; Recognition, Talks, Shows and Published in share one "Recognition & appearances" row there).
 
 ## Editing
 - Change project text → edit `content/projects.json`, then `python3 tools/build_html.py`.

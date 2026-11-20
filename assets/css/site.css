@@ -412,6 +412,12 @@ ft-log .e {
   visibility: hidden;
 }
 ft-log.on .e.go { visibility: visible; }
+ft-log .e { opacity: 0; transition: opacity .3s ease-out, translate .3s ease-out; }
+ft-log .e.go { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  ft-log .e { translate: 0 6px; }
+  ft-log .e.go { translate: 0; }   /* each line settles as its typing starts */
+}
 ft-log .t { white-space: pre-line; }
 
 /* ---------- hover: pointer devices only, so a tap never leaves an item looking selected ---------- */
@@ -455,6 +461,29 @@ ft-log .t { white-space: pre-line; }
   .ed-set { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: calc(5 * var(--rs)); }   /* four profile columns are too narrow here */
   .arc-meta { grid-column: 3; grid-row: 3; padding-left: 0; margin-top: 1.25em; }
 }
+
+/* ---------- loading and first-impression motion ---------- */
+/* page entrance: bio line first, profile 100ms later; the header stays put. Paused on its first
+   keyframe until the head script marks the font ready, so it can't run on the fallback face. */
+@keyframes enter-rise { from { opacity: 0; translate: 0 12px; filter: blur(4px); } }
+@keyframes enter-fade { from { opacity: 0; } }
+html.entering .bio-section h1, html.entering .ed-set { animation: enter-fade .4s ease-out both paused; }
+html.entering .ed-set { animation-delay: .1s; }
+html.entered .bio-section h1, html.entered .ed-set { animation-play-state: running; }
+@media (prefers-reduced-motion: no-preference) {
+  html.entering .bio-section h1, html.entering .ed-set { animation-name: enter-rise; }
+}
+
+/* images fade in as they finish loading instead of popping in (media.js marks them); a fade, so it
+   stays under reduced motion too. Without JS nothing is hidden. */
+html.fade-media .ss img, html.fade-media .tool-img img { opacity: 0; transition: opacity .3s ease-out; }
+html.fade-media .ss img.is-loaded, html.fade-media .tool-img img.is-loaded { opacity: 1; }
+
+/* the email label's word swaps (Email / Copy / Copied) settle in from 4px below */
+@keyframes word-in { from { opacity: 0; translate: 0 4px; } }
+@keyframes word-fade { from { opacity: 0; } }
+.word-in { display: inline-block; animation: word-fade .15s ease-out; }
+@media (prefers-reduced-motion: no-preference) { .word-in { animation-name: word-in; } }
 
 /* ---------- mobile ---------- */
 @media (max-width: 768px) {

@@ -37,7 +37,13 @@
 }
 </script>
 <meta name="theme-color" content="#000000">
-<script>document.documentElement.dataset.theme = 'dark'; /* always opens dark; the toggle switches for this visit */</script>
+<script>
+  document.documentElement.dataset.theme = 'dark'; /* always opens dark; the toggle switches for this visit */
+  /* one entrance per page load: the bio line and profile wait (hidden by their first keyframe) until the
+     font is ready, at most 700ms, so the text never jumps from the fallback font mid-entrance */
+  (function (h) { h.classList.add('entering'); var go = function () { h.classList.add('entered'); };
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(go); setTimeout(go, 700); })(document.documentElement);
+</script>
 <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="assets/favicon-512.png" type="image/png" sizes="512x512">
 <link rel="apple-touch-icon" href="assets/favicon-180.png">
@@ -361,6 +367,7 @@
 </footer>
 
 <script src="assets/js/hover-media.js" defer></script>
+<script src="assets/js/media.js" defer></script>
 <script src="assets/js/archive.js" defer></script>
 <script src="assets/js/footer.js" defer></script>
 <script src="assets/js/theme.js" defer></script>
