@@ -145,7 +145,7 @@
         var b = c.getBoundingClientRect(), mid = (b.left + b.right) / 2;
         if (mid >= l && mid <= r) { if (!first) first = k + 1; last = k + 1; }
       });
-      count.textContent = pad(first) + '–' + pad(last) + ' / ' + pad(cards.length);
+      count.textContent = (first === last ? pad(first) : pad(first) + '–' + pad(last)) + ' / ' + pad(cards.length);   // one card on screen: "01 / 08"
     }
     function page(dir) { // one screenful of cards: the visible stretch right of the inset
       var step = row.clientWidth - (parseFloat(getComputedStyle(row).scrollPaddingLeft) || 0);

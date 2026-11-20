@@ -475,7 +475,7 @@ ft-log .t { white-space: pre-line; }
   .arc-img .ss-bar { width: auto; margin-inline-start: 0; }
   .tools-wrap { grid-template-columns: 1fr; }
   .tools-wrap > .tools-bar { grid-column: 1; }
-  .tools, .arc[data-size] .tools { --w: 62vw; --inset: var(--pad) !important; }
+  .tools, .arc[data-size] .tools { --w: calc(100vw - 2 * var(--pad)); --inset: var(--pad) !important; }   /* one card fills the screen width */
 
   .ft { margin-top: calc(6 * var(--rs)); padding: calc(4.5 * var(--rs)) 0 var(--rs); }
   .ft-big { margin-bottom: calc(4.5 * var(--rs)); }
