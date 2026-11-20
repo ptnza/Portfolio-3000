@@ -174,8 +174,13 @@ h1 a.clip-trigger {
 .clip-float figcaption { margin-top: 8px; font-size: var(--text-caption); opacity: .6; }
 
 /* hover dimming (toggled by hover-media.js) */
-body.hm-anim .page-content * { transition: color var(--hover) !important; }
-body.hm-on .page-content *:not(.hm-active) { color: var(--hm-dim) !important; }
+/* One shared dim amount (--hm-t, 0 → 1) fades on <body>; every element reads it, so text and links
+   move in lockstep. (Fading each element's color instead made links lag: they inherit from a parent
+   that is itself mid-fade.) hm-anim keeps the rule on while it fades back. */
+@property --hm-t { syntax: "<number>"; inherits: true; initial-value: 0; }
+body { transition: --hm-t var(--hover); }
+body.hm-on { --hm-t: 1; }
+body.hm-anim .page-content *:not(.hm-active) { color: color-mix(in srgb, var(--hm-dim) calc(var(--hm-t) * 100%), var(--fg)) !important; }
 
 /* ---------- editorial columns ---------- */
 .ed-set {
