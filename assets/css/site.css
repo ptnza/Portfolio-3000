@@ -436,7 +436,7 @@ ft-log .t { white-space: pre-line; }
   .top-mail { grid-column: 3; }
   .top-nav { gap: 24px; justify-self: end; }
   .top-mail > .copy-email { display: none; }
-  :root { --rs: .8125em; --text-display: calc(1.625 * var(--base)); --text-body-sm: var(--rs); --text-footer: calc(3.6 * var(--rs)); --text-overlay: calc(4.5 * var(--rs)); }
+  :root { --rs: .8125em; --text-display: calc(1.875 * var(--base)); --text-body-sm: var(--rs); --text-footer: calc(3.6 * var(--rs)); --text-overlay: calc(4.5 * var(--rs)); }
   .bio-section { display: block; margin-top: calc(4 * var(--rs)); margin-bottom: calc(6 * var(--rs)); }
   .ed-set { grid-template-columns: 1fr; margin-top: calc(4 * var(--rs)); }
   .ed { gap: 0; }
