@@ -21,7 +21,7 @@ Cloudflare Workers (static assets) from `main` at [gavinpotenza.xyz](https://gav
 - `404.html`, `robots.txt`, `_headers` — Cloudflare serves `404.html` (with a 404 status) for
   unknown paths and applies `_headers` (media cached a day; CSS/JS/HTML revalidate every visit). `sitemap.xml` is written by `build_html.py`.
 - `wrangler.jsonc`, `.assetsignore` — Cloudflare deploy config; `.assetsignore` keeps repo-only files (`content/`, `tools/`, `.git` …) off the site.
-- `assets/fonts/` — PP Neue Montreal Book (350), Regular (400), Medium (500) as licensed `.woff2`, declared at the top of `site.css`. Keep this repo private: the license doesn't allow redistributing the files.
+- `assets/fonts/` — PP Neue Montreal Book (350), Regular (400), Italic (400), Medium (500) as licensed `.woff2`, declared at the top of `site.css`. Keep this repo private: the license doesn't allow redistributing the files.
 - `assets/favicon-{32,180,512}.png` + root `favicon.ico` — the orb.
 - `assets/hover/` — bio hover images (quote clipping, studio logos, Superhuman/Calendly), plus
   footer hover screenshots: `profile-{linkedin,github,twitter,instagram,datalands}.jpg`.

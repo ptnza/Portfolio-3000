@@ -1,10 +1,11 @@
 /* ---------- fonts ----------
    PP Neue Montreal, self-hosted (licensed web files). Book carries the in-between 350 the
    bio line and footer use. The family has no ↦ or ↰, so Inter Tight supplies just those two
-   (a &text= subset in index.html). No italic cut is loaded: <i> titles are browser-slanted. */
+   (a &text= subset in index.html). There's no Book italic, so italics are Regular. */
 @font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Book.woff2") format("woff2"); font-weight: 350; font-display: swap; }
 @font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Medium.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "PP Neue Montreal"; src: url("../fonts/PPNeueMontreal-Italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
 
 /* ---------- tokens ----------
    Theme: one switch, [data-theme] on <html>. The head script opens every visit dark; the toggle
@@ -86,7 +87,7 @@ h1 {
   font-weight: 350;
   font-size: var(--text-display);
   line-height: var(--leading-tight);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 /* Roles. The rem scale follows the window; the tokens above carry the floors.
@@ -94,8 +95,8 @@ h1 {
 .caption  { font-weight: 400; font-size: var(--text-body-sm); line-height: 1.1733; }
 .alt-body { font-weight: 400; font-size: var(--text-body-sm); line-height: var(--leading-ui); display: block; overflow-wrap: break-word; }
 .label    { font-weight: 500; font-size: var(--text-body-sm); line-height: 1; display: block; }
-.yuge     { font-weight: 400; font-size: var(--text-footer); line-height: .95; letter-spacing: -0.048em; }
-.changelog { font-weight: 400; font-size: var(--text-overlay); line-height: .85; letter-spacing: -0.058em; }
+.yuge     { font-weight: 400; font-size: var(--text-footer); line-height: .95; letter-spacing: -0.015em; }
+.changelog { font-weight: 400; font-size: var(--text-overlay); line-height: .85; letter-spacing: -0.025em; }
 
 .page-content { padding: 0 var(--pad); }
 
